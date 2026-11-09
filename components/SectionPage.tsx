@@ -111,12 +111,12 @@ export default function SectionPage({
           {leadArticle.imageUrl && (
             <div 
               onClick={() => onSelectArticle(leadArticle)}
-              className="relative aspect-video w-full bg-slate-900 border border-[#E5E7EB] overflow-hidden cursor-pointer group"
+              className="relative aspect-[4/3] sm:aspect-[16/10] w-full bg-slate-900 border border-[#E5E7EB] overflow-hidden cursor-pointer group"
             >
               <img
                 src={leadArticle.imageUrl}
                 alt={leadArticle.title}
-                className="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-300"
+                className="w-full h-full object-cover object-[center_30%] group-hover:scale-[1.01] transition-transform duration-300"
                 referrerPolicy="no-referrer"
               />
               {leadArticle.imageCaption && (

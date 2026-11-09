@@ -72,6 +72,14 @@ export const FINANCIAL_TICKER: MarketItem[] = [
 
 export const BREAKING_DISPATCHES: DispatchItem[] = [
   {
+    id: 'disp-ucm-penitenciario',
+    time: '11:35',
+    category: 'NAMPULA · UCM',
+    title: 'Estudantes de Relações Públicas e Marketing da UCM realizam visita ao Estabelecimento Penitenciário Regional Norte',
+    summary: 'Académicos do 3.º ano da Faculdade de Educação e Comunicação em Nampula conhecem funcionamento e comunicação institucional do sistema prisional.',
+    urgency: 'high'
+  },
+  {
     id: 'disp-belenenses',
     time: '11:28',
     category: 'NAMPULA · SEGURANÇA',
@@ -211,8 +219,8 @@ export const ARTICLE_DROGAS_BELENENSES: Article = {
   dateline: 'Bairro dos Belenenses, Nampula',
   readTime: '6 min de leitura',
   updatedAt: 'Hoje às 11:10 CAT',
-  imageUrl: '/assets/images/nampula_drogas_belenenses_1794183534755.jpg',
-  imageCaption: 'Fig. 1 — Sessão de esclarecimento comunitário e sensibilização anti-drogas com líderes de quarteirão e assistentes sociais no Bairro dos Belenenses, em Nampula.',
+  imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-09_at_09.39.40_624df156.jpeg',
+  imageCaption: 'Fig. 1 — Trabalho de campo no Bairro dos Belenenses (Nampula): Enviada especial do Manhã Informativo entrevista residente local sobre a mobilização comunitária e o combate ao consumo de drogas.',
   audioDuration: '09:40 min',
   tags: ['Nampula', 'Belenenses', 'Drogas', 'SERNIC', 'Comunidade']
 };
@@ -240,10 +248,40 @@ export const ARTICLE_DETENTOS_ARREPENDIDOS: Article = {
   dateline: 'Cadeia Regional de Nampula',
   readTime: '7 min de leitura',
   updatedAt: 'Hoje às 10:45 CAT',
-  imageUrl: '/assets/images/detentos_reabilitacao_nampula_1794183534098.jpg',
-  imageCaption: 'Fig. 2 — Oficina de formação profissional em marcenaria na penitenciária de Nampula: Reclusos arrependidos dedicam-se à produção de mobiliário escolar.',
+  imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-09_at_09.34.10_5b3c5914.jpeg',
+  imageCaption: 'Fig. 2 — Entrada oficial do Estabelecimento Penitenciário Regional de Nampula (Serviço Nacional Penitenciário): Equipa de reportagem e técnicos de saúde no arranque da investigação sobre reintegração social.',
   audioDuration: '08:15 min',
   tags: ['Nampula', 'Detentos', 'Arrependimento', 'Reabilitação', 'Justiça']
+};
+
+export const ARTICLE_UCM_VISITA_PENITENCIARIO: Article = {
+  id: 'ucm-visita-penitenciario-norte',
+  category: 'COMUNICAÇÃO & ENSINO UNIVERSITÁRIO · UCM',
+  categoryColor: '#0050cc',
+  isExclusive: true,
+  title: 'Estudantes da UCM Realizam Visita ao Estabelecimento Penitenciário Regional Norte, em Nampula',
+  subtitle: 'Académicos do 3.º ano de Relações Públicas e Marketing Estratégico tiveram a oportunidade de conhecer de perto uma instituição do sistema penitenciário moçambicano.',
+  leadParagraph: 'Estudantes do 3.º ano do curso de Relações Públicas e Marketing Estratégico da Universidade Católica de Moçambique (UCM), Faculdade de Educação e Comunicação, em Nampula, realizaram uma visita ao Estabelecimento Penitenciário Regional Norte.',
+  fullContent: [
+    'Estudantes do 3.º ano do curso de Relações Públicas e Marketing Estratégico da Universidade Católica de Moçambique (UCM), Faculdade de Educação e Comunicação, em Nampula, realizaram uma visita ao Estabelecimento Penitenciário Regional Norte.',
+    'A actividade enquadra-se na importância da formação académica aliada à experiência prática, permitindo aos estudantes estabelecer contacto com instituições públicas e conhecer melhor as suas dinâmicas de funcionamento e comunicação institucional.',
+    'A iniciativa representa uma oportunidade de aprendizagem para os futuros profissionais de Relações Públicas e Marketing Estratégico, sobretudo no que diz respeito à comunicação organizacional, relacionamento institucional e responsabilidade social.',
+    'A aproximação entre a universidade e as instituições da sociedade constitui um elemento importante para a formação de profissionais preparados para compreender os diferentes contextos sociais e organizacionais.',
+    'MANHÃ INFORMATIVO — Informar, esclarecer e dar voz à sociedade.'
+  ],
+  author: {
+    name: 'Redação UCM · Comunicação & Relações Públicas',
+    role: 'Faculdade de Educação e Comunicação',
+    avatar: 'UCM',
+    affiliation: 'Universidade Católica de Moçambique (Nampula)'
+  },
+  dateline: 'Nampula / Moçambique',
+  readTime: '4 min de leitura',
+  updatedAt: 'Hoje às 11:45 CAT',
+  imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-09_at_09.35.10_d0248070.jpeg',
+  imageCaption: 'Fig. 1 — Estudantes do 3.º ano de Relações Públicas e Marketing Estratégico da UCM (Faculdade de Educação e Comunicação) em visita ao Estabelecimento Penitenciário Regional Norte, em Nampula.',
+  audioDuration: '04:50 min',
+  tags: ['UCM', 'Nampula', 'Educação e Comunicação', 'Penitenciário', 'Relações Públicas', 'Marketing Estratégico']
 };
 
 export const OPINION_COLUMNISTS: Article[] = [
@@ -527,6 +565,7 @@ export const SECTION_CONTENTS: Record<string, SectionContent> = {
     sectionSubtitle: 'Investigação comunitária, reabilitação penitenciária, saúde pública e educação em Moçambique.',
     leadArticle: ARTICLE_DROGAS_BELENENSES,
     articles: [
+      ARTICLE_UCM_VISITA_PENITENCIARIO,
       ARTICLE_DETENTOS_ARREPENDIDOS,
       {
         id: 'soc-saude-hospitais',
@@ -701,6 +740,7 @@ export const SECTION_CONTENTS: Record<string, SectionContent> = {
     sectionSubtitle: 'Dossiês documentados, auditorias forenses a contratos públicos e investigações especiais exclusivas.',
     leadArticle: ARTICLE_DROGAS_BELENENSES,
     articles: [
+      ARTICLE_UCM_VISITA_PENITENCIARIO,
       PRIMARY_LEAD_STORY,
       ARTICLE_DETENTOS_ARREPENDIDOS,
       {

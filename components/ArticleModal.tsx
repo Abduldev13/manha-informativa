@@ -197,11 +197,11 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
           {/* Featured Image if present */}
           {article.imageUrl && (
             <div className="space-y-2">
-              <div className="aspect-[16/9] w-full bg-slate-900 border border-[#E5E7EB] overflow-hidden">
+              <div className="max-h-[540px] aspect-[4/3] sm:aspect-[16/10] w-full bg-slate-900 border border-[#E5E7EB] overflow-hidden">
                 <img
                   src={article.imageUrl}
                   alt={article.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-[center_30%]"
                   referrerPolicy="no-referrer"
                 />
               </div>

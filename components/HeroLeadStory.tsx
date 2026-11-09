@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Article, PRIMARY_LEAD_STORY, SECONDARY_LEAD_STORY, ARTICLE_DROGAS_BELENENSES, ARTICLE_DETENTOS_ARREPENDIDOS } from '@/data/articles';
+import { Article, PRIMARY_LEAD_STORY, SECONDARY_LEAD_STORY, ARTICLE_DROGAS_BELENENSES, ARTICLE_DETENTOS_ARREPENDIDOS, ARTICLE_UCM_VISITA_PENITENCIARIO } from '@/data/articles';
 import { Volume2, VolumeX, Bookmark, Share2, ArrowRight, Play, Check } from 'lucide-react';
 
 interface HeroLeadStoryProps {
@@ -191,11 +191,11 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
               INVESTIGAÇÃO NAMPULA
             </span>
             <span className="text-xs font-serif font-bold text-[#0D1B2A]">
-              Bairro dos Belenenses & Penitenciária
+              UCM · Bairro dos Belenenses · Penitenciária Regional Norte
             </span>
           </div>
           <span className="text-[10px] text-[#74777d] uppercase font-mono">
-            Edição do Norte
+            Edição Especial Nampula
           </span>
         </div>
 
@@ -220,11 +220,11 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
 
           {/* Documentary Photo: Bairro dos Belenenses */}
           {ARTICLE_DROGAS_BELENENSES.imageUrl && (
-            <div className="relative aspect-[16/9] w-full bg-slate-900 border border-[#E5E7EB] overflow-hidden">
+            <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full bg-slate-900 border border-[#E5E7EB] overflow-hidden">
               <img
                 src={ARTICLE_DROGAS_BELENENSES.imageUrl}
                 alt={ARTICLE_DROGAS_BELENENSES.title}
-                className="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-300"
+                className="w-full h-full object-cover object-[center_30%] group-hover:scale-[1.01] transition-transform duration-300"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute top-2 left-2 bg-[#0D1B2A]/90 text-white text-[9px] sm:text-[10px] uppercase font-bold px-2 py-0.5 border border-white/20">
@@ -251,7 +251,59 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
           </div>
         </div>
 
-        {/* Story 2: Detentos Arrependidos na Cadeia de Nampula */}
+        {/* Story 2: Estudantes da UCM Realizam Visita ao Estabelecimento Penitenciário Regional Norte, em Nampula */}
+        <div 
+          onClick={() => onSelectArticle(ARTICLE_UCM_VISITA_PENITENCIARIO)}
+          className="cursor-pointer group space-y-2.5 sm:space-y-3 pb-5 sm:pb-6 border-b border-[#E5E7EB]"
+        >
+          <div className="flex items-center gap-2 text-[10px] uppercase font-bold text-[#0066FF]">
+            <span>{ARTICLE_UCM_VISITA_PENITENCIARIO.category}</span>
+            <span className="text-[#c4c6cc]">·</span>
+            <span>UCM NAMPULA</span>
+          </div>
+
+          <h3 className="font-serif text-xl xs:text-2xl sm:text-3xl font-bold text-[#0D1B2A] group-hover:text-[#0066FF] transition-colors leading-snug">
+            {ARTICLE_UCM_VISITA_PENITENCIARIO.title}
+          </h3>
+
+          <p className="font-serif italic text-xs xs:text-sm sm:text-base text-[#44474c] leading-relaxed">
+            {ARTICLE_UCM_VISITA_PENITENCIARIO.subtitle}
+          </p>
+
+          {/* Documentary Photo: UCM Students in front of Penitenciário Regional Norte sign */}
+          {ARTICLE_UCM_VISITA_PENITENCIARIO.imageUrl && (
+            <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full bg-slate-900 border border-[#E5E7EB] overflow-hidden">
+              <img
+                src={ARTICLE_UCM_VISITA_PENITENCIARIO.imageUrl}
+                alt={ARTICLE_UCM_VISITA_PENITENCIARIO.title}
+                className="w-full h-full object-cover object-[center_20%] group-hover:scale-[1.01] transition-transform duration-300"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute top-2 left-2 bg-[#0D1B2A]/90 text-white text-[9px] sm:text-[10px] uppercase font-bold px-2 py-0.5 border border-white/20">
+                UCM · Penitenciário Regional Norte - NPL
+              </div>
+            </div>
+          )}
+
+          {ARTICLE_UCM_VISITA_PENITENCIARIO.imageCaption && (
+            <p className="text-[11px] sm:text-xs font-serif italic text-[#44474c] bg-[#f1f3ff] p-2 border border-[#E5E7EB]">
+              {ARTICLE_UCM_VISITA_PENITENCIARIO.imageCaption}
+            </p>
+          )}
+
+          <p className="font-sans text-xs sm:text-sm text-[#141b2b] leading-relaxed">
+            {ARTICLE_UCM_VISITA_PENITENCIARIO.leadParagraph}
+          </p>
+
+          <div className="flex flex-wrap items-center justify-between text-xs text-[#74777d] pt-1 gap-2">
+            <span>Por {ARTICLE_UCM_VISITA_PENITENCIARIO.author.name} · {ARTICLE_UCM_VISITA_PENITENCIARIO.dateline}</span>
+            <span className="text-[#0066FF] font-bold group-hover:underline flex items-center gap-1 min-h-[32px]">
+              Ler notícia da UCM <ArrowRight className="w-3.5 h-3.5" />
+            </span>
+          </div>
+        </div>
+
+        {/* Story 3: Detentos Arrependidos na Cadeia de Nampula */}
         <div 
           onClick={() => onSelectArticle(ARTICLE_DETENTOS_ARREPENDIDOS)}
           className="cursor-pointer group space-y-2.5 sm:space-y-3 pt-2"
@@ -270,17 +322,17 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
             {ARTICLE_DETENTOS_ARREPENDIDOS.subtitle}
           </p>
 
-          {/* Documentary Photo: Detentos Arrependidos em Marcenaria */}
+          {/* Documentary Photo: Estabelecimento Penitenciário Regional de Nampula */}
           {ARTICLE_DETENTOS_ARREPENDIDOS.imageUrl && (
-            <div className="relative aspect-[16/9] w-full bg-slate-900 border border-[#E5E7EB] overflow-hidden">
+            <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-slate-900 border border-[#E5E7EB] overflow-hidden">
               <img
                 src={ARTICLE_DETENTOS_ARREPENDIDOS.imageUrl}
                 alt={ARTICLE_DETENTOS_ARREPENDIDOS.title}
-                className="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-300"
+                className="w-full h-full object-cover object-center group-hover:scale-[1.01] transition-transform duration-300"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute top-2 left-2 bg-[#0D1B2A]/90 text-white text-[9px] sm:text-[10px] uppercase font-bold px-2 py-0.5 border border-white/20">
-                Oficina Penitenciária de Nampula
+                Estabelecimento Penitenciário de Nampula
               </div>
             </div>
           )}
