@@ -1,0 +1,6 @@
+{
+  "name": "Manhã Informativo",
+  "description": "Sistema Editorial e Transmissão em Direto de Moçambique - O Diário Nacional de Investigação e Emissão Pública",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
