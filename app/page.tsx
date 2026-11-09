@@ -17,10 +17,12 @@ import PrintEditionModal from '@/components/PrintEditionModal';
 import SearchDrawer from '@/components/SearchDrawer';
 import BroadcastModal from '@/components/BroadcastModal';
 import SubscriptionModal from '@/components/SubscriptionModal';
-import { Article, DispatchItem, PRIMARY_LEAD_STORY, SECONDARY_LEAD_STORY, OPINION_COLUMNISTS, GENERAL_ARTICLES } from '@/data/articles';
+import MobileNavigationDrawer from '@/components/MobileNavigationDrawer';
+import MobileBottomBar from '@/components/MobileBottomBar';
+import { Article, DispatchItem } from '@/data/articles';
 import SectionPage from '@/components/SectionPage';
-import CommercialShowcase, { KoffeinVideoAd, GrecyEventsAd } from '@/components/Advertisements';
-import { X, Filter, Radio } from 'lucide-react';
+import CommercialShowcase from '@/components/Advertisements';
+import { X, Filter } from 'lucide-react';
 
 export default function HomePage() {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
@@ -28,16 +30,17 @@ export default function HomePage() {
   const [isPrintEditionOpen, setIsPrintEditionOpen] = useState(false);
   const [isBroadcastModalOpen, setIsBroadcastModalOpen] = useState(false);
   const [isSubscribeOpen, setIsSubscribeOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentEdition, setCurrentEdition] = useState('Edição Nacional / Maputo');
   const [activeCategory, setActiveCategory] = useState('all');
   const [fontSizeLevel, setFontSizeLevel] = useState(0);
   const [selectedDispatch, setSelectedDispatch] = useState<DispatchItem | null>(null);
 
   const fontSizeClasses = {
-    [-1]: 'text-sm leading-relaxed',
-    [0]: 'text-[16px] leading-[27px]',
-    [1]: 'text-lg leading-[30px]',
-    [2]: 'text-xl leading-[34px]'
+    [-1]: 'text-xs sm:text-sm leading-relaxed',
+    [0]: 'text-[15px] sm:text-[16px] leading-[26px] sm:leading-[27px]',
+    [1]: 'text-[17px] sm:text-lg leading-[29px] sm:leading-[30px]',
+    [2]: 'text-[19px] sm:text-xl leading-[32px] sm:leading-[34px]'
   };
 
   const handleAdjustFontSize = (delta: number) => {
@@ -59,16 +62,16 @@ export default function HomePage() {
       leadParagraph: selectedDispatch.summary,
       fullContent: [
         selectedDispatch.summary,
-        'Esta notícia urgente foi apurada pela redação do Manhã Informativo em contacto direto com os centros operacionais e fontes institucionais em Maputo e nas capitais provinciais.',
+        'Esta notícia urgente foi apurada pela redação do Manhã Informativo em contacto direto com os centros operacionais e fontes institucionais em Nampula, Sofala e Maputo.',
         'A informação continua em permanente atualização à medida que os despachos das autoridades e os relatórios técnicos forem homologados.'
       ],
       author: {
         name: 'Redação Central de Despachos',
         role: 'Fio de Notícias ao Minuto',
         avatar: 'RD',
-        affiliation: 'Manhã Informativo Maputo'
+        affiliation: 'Manhã Informativo Nacional'
       },
-      dateline: 'Maputo / Moçambique',
+      dateline: 'Nampula / Maputo',
       readTime: '2 min de leitura',
       updatedAt: `Hoje às ${selectedDispatch.time} CAT`,
       tags: [selectedDispatch.category, 'Urgente', 'Despacho']
@@ -79,9 +82,9 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f9f9ff] text-[#141b2b] flex flex-col font-sans selection:bg-[#0066FF] selection:text-white">
+    <div className="min-h-screen bg-[#f9f9ff] text-[#141b2b] flex flex-col font-sans selection:bg-[#0066FF] selection:text-white pb-16 lg:pb-0">
       
-      {/* 1. Top Utility Rail */}
+      {/* 1. Top Utility Rail (Responsive with mobile menu button) */}
       <TopUtilityRail
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenPrintEdition={() => setIsPrintEditionOpen(true)}
@@ -90,6 +93,7 @@ export default function HomePage() {
         onToggleBroadcastDrawer={() => setIsBroadcastModalOpen(true)}
         fontSizeLevel={fontSizeLevel}
         onAdjustFontSize={handleAdjustFontSize}
+        onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
       />
 
       {/* 2. Primary Brand Masthead with Classic Double Rules */}
@@ -98,12 +102,13 @@ export default function HomePage() {
         onSubscribeClick={() => setIsSubscribeOpen(true)}
       />
 
-      {/* 3. Navigation Bar */}
+      {/* 3. Navigation Bar (Horizontal smooth scroll + mobile menu affordance) */}
       <NavigationBar
         activeCategory={activeCategory}
         onSelectCategory={(cat) => setActiveCategory(cat)}
         onOpenLiveBroadcast={() => setIsBroadcastModalOpen(true)}
         onOpenSubscribeModal={() => setIsSubscribeOpen(true)}
+        onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
       />
 
       {/* 4. Breaking News Ticker ("URGENTE") */}
@@ -111,27 +116,27 @@ export default function HomePage() {
 
       {/* Active Category Filter Banner (if user filtered) */}
       {activeCategory !== 'all' && (
-        <div className="bg-[#f1f3ff] border-b border-[#E5E7EB] py-2 px-4">
-          <div className="max-w-[1440px] mx-auto flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2">
-              <Filter className="w-3.5 h-3.5 text-[#0066FF]" />
-              <span className="text-[#44474c]">Filtrando por secção:</span>
-              <span className="font-bold uppercase text-[#0D1B2A]">
+        <div className="bg-[#f1f3ff] border-b border-[#E5E7EB] py-2 px-3 sm:px-4">
+          <div className="max-w-[1440px] mx-auto flex items-center justify-between text-xs gap-2">
+            <div className="flex items-center gap-2 truncate">
+              <Filter className="w-3.5 h-3.5 text-[#0066FF] shrink-0" />
+              <span className="text-[#44474c] hidden xs:inline">Filtrando por secção:</span>
+              <span className="font-bold uppercase text-[#0D1B2A] truncate">
                 {NAV_SECTIONS.find((s) => s.id === activeCategory)?.label}
               </span>
             </div>
             <button
               onClick={() => setActiveCategory('all')}
-              className="text-[#0066FF] hover:underline font-semibold"
+              className="text-[#0066FF] hover:underline font-semibold shrink-0 cursor-pointer min-h-[32px] flex items-center"
             >
-              Voltar à Primeira Página Geral
+              Voltar à Capa Principal
             </button>
           </div>
         </div>
       )}
 
       {/* 5. Main Content: Either Dedicated Section Page or Master Broadsheet Grid */}
-      <main className="flex-1 max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <main className="flex-1 max-w-[1440px] w-full mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-6">
         
         {activeCategory !== 'all' ? (
           <SectionPage
@@ -142,26 +147,26 @@ export default function HomePage() {
           />
         ) : (
           <>
-            {/* Asymmetrical 12-Column Broadsheet Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Asymmetrical Broadsheet Grid (Mobile 1 col, Tablet 12 cols 7+5, Desktop 12 cols 7+3+2) */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start">
               
-              {/* Column 1 to 7: Primary Investigative Story Block (7 cols) */}
-              <section className="lg:col-span-7 column-divider-r pr-0 lg:pr-8">
+              {/* Primary Investigative Story Block: Phone 1 col, Tablet 7 cols, Desktop 7 cols */}
+              <section className="col-span-1 md:col-span-7 lg:col-span-7 column-divider-r pr-0 md:pr-6 lg:pr-8">
                 <HeroLeadStory
                   onSelectArticle={(art) => setSelectedArticle(art)}
                   fontSizeClass={fontSizeClasses[fontSizeLevel as keyof typeof fontSizeClasses]}
                 />
               </section>
 
-              {/* Column 8 to 10: Secondary Analytical & Columnist Block (3 cols) */}
-              <section className="lg:col-span-3 column-divider-r pr-0 lg:pr-6">
+              {/* Secondary Analytical & Columnist Block: Phone 1 col, Tablet 5 cols, Desktop 3 cols */}
+              <section className="col-span-1 md:col-span-5 lg:col-span-3 column-divider-r pr-0 lg:pr-6">
                 <AnalyticalColumn
                   onSelectArticle={(art) => setSelectedArticle(art)}
                 />
               </section>
 
-              {/* Column 11 to 12: Live Dispatch & Telemetry Rail (2 cols) */}
-              <section className="lg:col-span-2 space-y-6">
+              {/* Live Dispatch & Telemetry Rail: Phone 1 col, Tablet 12 cols, Desktop 2 cols */}
+              <section className="col-span-1 md:col-span-12 lg:col-span-2 space-y-5 sm:space-y-6">
                 <LiveDispatchRail
                   onSelectDispatch={handleSelectDispatch}
                   onOpenLiveBroadcastModal={() => setIsBroadcastModalOpen(true)}
@@ -206,6 +211,32 @@ export default function HomePage() {
       {/* 9. Institutional Broadsheet Footer */}
       <Footer />
 
+      {/* 10. Persistent Mobile Bottom Bar for Touch Ergonomics (Visible on mobile/tablet, hidden on desktop) */}
+      <MobileBottomBar
+        activeCategory={activeCategory}
+        onSelectCategory={(cat) => setActiveCategory(cat)}
+        onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
+        onOpenLiveBroadcast={() => setIsBroadcastModalOpen(true)}
+        onOpenSearch={() => setIsSearchOpen(true)}
+        onOpenPrintEdition={() => setIsPrintEditionOpen(true)}
+      />
+
+      {/* 11. Mobile Navigation Slide-Over Drawer */}
+      <MobileNavigationDrawer
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        activeCategory={activeCategory}
+        onSelectCategory={(cat) => setActiveCategory(cat)}
+        onOpenLiveBroadcast={() => setIsBroadcastModalOpen(true)}
+        onOpenPrintEdition={() => setIsPrintEditionOpen(true)}
+        onOpenSearch={() => setIsSearchOpen(true)}
+        onOpenSubscribeModal={() => setIsSubscribeOpen(true)}
+        currentEdition={currentEdition}
+        onSelectEdition={(ed) => setCurrentEdition(ed)}
+        fontSizeLevel={fontSizeLevel}
+        onAdjustFontSize={handleAdjustFontSize}
+      />
+
       {/* Modals & Overlays */}
       {/* Article Reader Modal */}
       <ArticleModal
@@ -240,16 +271,17 @@ export default function HomePage() {
 
       {/* Quick Dispatch Detail Modal */}
       {selectedDispatch && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-center p-4 animate-fadeIn">
-          <div className="relative w-full max-w-lg bg-white border border-[#0D1B2A] shadow-2xl p-6 flex flex-col my-auto text-[#141b2b]">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-center p-3 sm:p-4 animate-fadeIn overflow-y-auto">
+          <div className="relative w-full max-w-lg bg-white border border-[#0D1B2A] shadow-2xl p-4 sm:p-6 flex flex-col my-auto text-[#141b2b]">
             <button
               onClick={() => setSelectedDispatch(null)}
-              className="absolute top-3 right-3 p-1 text-[#74777d] hover:text-[#0D1B2A]"
+              className="absolute top-3 right-3 p-1.5 text-[#74777d] hover:text-[#0D1B2A] cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
+              aria-label="Fechar despacho"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex flex-wrap items-center gap-2 mb-2 pr-8">
               <span className="bg-[#C91414] text-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">
                 DESPACHO URGENTE
               </span>
@@ -259,19 +291,19 @@ export default function HomePage() {
               <span className="text-[#74777d] text-xs">· {selectedDispatch.category}</span>
             </div>
 
-            <h3 className="font-serif text-xl font-bold text-[#0D1B2A] leading-snug mt-2">
+            <h3 className="font-serif text-lg sm:text-xl font-bold text-[#0D1B2A] leading-snug mt-1.5">
               {selectedDispatch.title}
             </h3>
 
-            <p className="font-sans text-sm text-[#44474c] mt-3 leading-relaxed">
+            <p className="font-sans text-xs sm:text-sm text-[#44474c] mt-2.5 leading-relaxed">
               {selectedDispatch.summary}
             </p>
 
-            <div className="mt-6 pt-4 border-t border-[#E5E7EB] flex items-center justify-between">
-              <span className="text-xs text-[#74777d]">Transmitido na rede de telex informativo</span>
+            <div className="mt-5 pt-3.5 border-t border-[#E5E7EB] flex flex-col xs:flex-row items-stretch xs:items-center justify-between gap-2.5">
+              <span className="text-[11px] text-[#74777d]">Rede de telex informativo</span>
               <button
                 onClick={handleReadFullDispatch}
-                className="px-4 py-1.5 bg-[#0D1B2A] hover:bg-[#0066FF] text-white text-xs font-bold uppercase tracking-wider transition-colors"
+                className="px-4 py-2 bg-[#0D1B2A] hover:bg-[#0066FF] text-white text-xs font-bold uppercase tracking-wider transition-colors min-h-[38px] flex items-center justify-center cursor-pointer"
               >
                 Ler Cobertura Completa
               </button>

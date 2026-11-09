@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Article, OPINION_COLUMNISTS } from '@/data/articles';
-import { Quote, Feather, TrendingUp, Award, ExternalLink } from 'lucide-react';
+import { Feather, TrendingUp } from 'lucide-react';
 
 interface AnalyticalColumnProps {
   onSelectArticle: (article: Article) => void;
@@ -10,12 +10,12 @@ interface AnalyticalColumnProps {
 
 export default function AnalyticalColumn({ onSelectArticle }: AnalyticalColumnProps) {
   return (
-    <aside className="w-full flex flex-col space-y-6">
+    <aside className="w-full flex flex-col space-y-5 sm:space-y-6">
       
       {/* Section Masthead Header */}
       <div className="border-b-2 border-[#0D1B2A] pb-1">
         <div className="flex items-center justify-between">
-          <h3 className="font-serif text-lg font-bold tracking-tight uppercase text-[#0D1B2A] flex items-center gap-2">
+          <h3 className="font-serif text-base sm:text-lg font-bold tracking-tight uppercase text-[#0D1B2A] flex items-center gap-2">
             <Feather className="w-4 h-4 text-[#0066FF]" />
             <span>Tribuna & Opinião</span>
           </h3>
@@ -26,13 +26,13 @@ export default function AnalyticalColumn({ onSelectArticle }: AnalyticalColumnPr
       </div>
 
       {/* Columnists Stack */}
-      <div className="divide-y divide-[#E5E7EB] space-y-6">
+      <div className="divide-y divide-[#E5E7EB] space-y-5 sm:space-y-6">
         {OPINION_COLUMNISTS.map((col, index) => (
           <div
             key={col.id}
             onClick={() => onSelectArticle(col)}
-            className={`cursor-pointer group pt-6 first:pt-0 ${
-              index === 0 ? 'bg-[#f1f3ff]/50 p-4 border border-[#E5E7EB]' : ''
+            className={`cursor-pointer group pt-5 sm:pt-6 first:pt-0 ${
+              index === 0 ? 'bg-[#f1f3ff]/50 p-3 sm:p-4 border border-[#E5E7EB]' : ''
             }`}
           >
             {/* Category tag */}
@@ -42,22 +42,22 @@ export default function AnalyticalColumn({ onSelectArticle }: AnalyticalColumnPr
             </div>
 
             {/* Author Presentation: Centered Portraiture & Signature */}
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-11 h-11 bg-[#0D1B2A] text-white flex items-center justify-center font-serif text-base font-bold shrink-0 border border-[#0066FF]/30">
+            <div className="flex items-center gap-3 mb-2.5 sm:mb-3">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#0D1B2A] text-white flex items-center justify-center font-serif text-base font-bold shrink-0 border border-[#0066FF]/30">
                 {col.author.avatar}
               </div>
               <div className="min-w-0">
-                <h4 className="font-sans text-sm font-bold text-[#0D1B2A] group-hover:text-[#0066FF] transition-colors leading-tight">
+                <h4 className="font-sans text-xs sm:text-sm font-bold text-[#0D1B2A] group-hover:text-[#0066FF] transition-colors leading-tight">
                   {col.author.name}
                 </h4>
-                <p className="text-[11px] text-[#74777d] truncate">
+                <p className="text-[10px] sm:text-[11px] text-[#74777d] truncate">
                   {col.author.affiliation}
                 </p>
               </div>
             </div>
 
             {/* Essay Title */}
-            <h5 className="font-serif text-xl font-semibold text-[#0D1B2A] group-hover:text-[#0066FF] transition-colors leading-snug mb-2">
+            <h5 className="font-serif text-lg sm:text-xl font-semibold text-[#0D1B2A] group-hover:text-[#0066FF] transition-colors leading-snug mb-2">
               {col.title}
             </h5>
 
@@ -68,9 +68,9 @@ export default function AnalyticalColumn({ onSelectArticle }: AnalyticalColumnPr
               </p>
             </div>
 
-            {/* Read essay link */}
+            {/* Read essay link with min 32px touch target */}
             <div className="mt-2 text-right">
-              <span className="text-[11px] font-bold text-[#0066FF] group-hover:underline uppercase tracking-wider">
+              <span className="text-[11px] font-bold text-[#0066FF] group-hover:underline uppercase tracking-wider inline-flex items-center min-h-[32px]">
                 Ler Ensaio Completo →
               </span>
             </div>
@@ -79,7 +79,7 @@ export default function AnalyticalColumn({ onSelectArticle }: AnalyticalColumnPr
       </div>
 
       {/* Analytical Barometer Widget */}
-      <div className="p-4 bg-white border border-[#E5E7EB] mt-4">
+      <div className="p-3 sm:p-4 bg-white border border-[#E5E7EB] mt-2 sm:mt-4">
         <div className="flex items-center justify-between border-b border-[#E5E7EB] pb-2 mb-3">
           <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0D1B2A]">
             <TrendingUp className="w-3.5 h-3.5 text-emerald-700" />

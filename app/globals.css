@@ -11,6 +11,7 @@
     background-color: #f9f9ff;
     color: #141b2b;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, .font-serif, .font-editorial {
@@ -31,25 +32,51 @@
   border-bottom: 1px solid #E5E7EB;
 }
 
-/* Drop cap for editorial lead stories */
+/* Drop cap for editorial lead stories with responsive scaling */
 .editorial-drop-cap::first-letter {
   font-family: var(--font-newsreader), Georgia, serif;
-  font-size: 3.8rem;
+  font-size: clamp(2.8rem, 5vw, 3.8rem);
   line-height: 0.82;
   float: left;
-  margin-right: 0.65rem;
-  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+  margin-top: 0.15rem;
   font-weight: 700;
   color: #0D1B2A;
 }
 
-/* Broadsheet hairline column divider */
-.column-divider-r {
-  border-right: 1px solid #E5E7EB;
+/* Responsive Broadsheet column divider */
+@media (min-width: 1024px) {
+  .column-divider-r {
+    border-right: 1px solid #E5E7EB;
+  }
+}
+
+@media (max-width: 1023px) {
+  .column-divider-r {
+    border-right: none;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 1.5rem;
+  }
 }
 
 .column-divider-b {
   border-bottom: 1px solid #E5E7EB;
+}
+
+/* Hide scrollbars utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* iOS Safe area padding for mobile bottom bar */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-area-pb {
+    padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+  }
 }
 
 /* Custom scrollbars for ticker and wire */

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Article } from '@/data/articles';
-import { X, Volume2, VolumeX, Share2, Printer, Bookmark, Check, ArrowLeft, Type } from 'lucide-react';
+import { X, Volume2, VolumeX, Share2, Printer, Check, ArrowLeft } from 'lucide-react';
 
 interface ArticleModalProps {
   article: Article | null;
@@ -14,7 +14,6 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
   const [fontSerif, setFontSerif] = useState(true);
   const [fontSize, setFontSize] = useState<'sm' | 'md' | 'lg'>('md');
   const [copied, setCopied] = useState(false);
-  const [saved, setSaved] = useState(false);
 
   if (!article) return null;
 
@@ -33,42 +32,42 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
   };
 
   const fontSizeClasses = {
-    sm: 'text-[15px] leading-[26px]',
-    md: 'text-[18px] leading-[30px]',
-    lg: 'text-[21px] leading-[34px]'
+    sm: 'text-[14px] sm:text-[15px] leading-[25px] sm:leading-[26px]',
+    md: 'text-[16px] sm:text-[18px] leading-[28px] sm:leading-[30px]',
+    lg: 'text-[18px] sm:text-[21px] leading-[31px] sm:leading-[34px]'
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex justify-center p-2 sm:p-4 lg:p-6 animate-fadeIn">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex justify-center p-0 sm:p-4 lg:p-6 animate-fadeIn">
       
       {/* Modal Container */}
-      <div className="relative w-full max-w-4xl bg-[#f9f9ff] text-[#141b2b] border border-[#0D1B2A] shadow-2xl flex flex-col my-auto max-h-[95vh] overflow-y-auto">
+      <div className="relative w-full max-w-4xl bg-[#f9f9ff] text-[#141b2b] border-x sm:border border-[#0D1B2A] shadow-2xl flex flex-col min-h-screen sm:min-h-0 sm:my-auto sm:max-h-[95vh] overflow-y-auto">
         
         {/* Top Sticky Tool Bar */}
-        <div className="sticky top-0 z-20 bg-white border-b border-[#E5E7EB] px-4 py-2.5 flex items-center justify-between text-xs">
+        <div className="sticky top-0 z-20 bg-white border-b border-[#E5E7EB] px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between text-xs gap-2">
           
           {/* Back Button */}
           <button
             onClick={onClose}
-            className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[#0D1B2A] hover:text-[#0066FF] transition-colors"
+            className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[#0D1B2A] hover:text-[#0066FF] transition-colors min-h-[40px] cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Voltar ao Jornal</span>
+            <ArrowLeft className="w-4 h-4 shrink-0" />
+            <span className="hidden xs:inline">Voltar</span>
           </button>
 
           {/* Reading Customization Controls */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3">
             {/* Font Family switch */}
-            <div className="flex items-center border border-[#E5E7EB] px-1 py-0.5 bg-[#f1f3ff]">
+            <div className="hidden xs:flex items-center border border-[#E5E7EB] px-1 py-0.5 bg-[#f1f3ff]">
               <button
                 onClick={() => setFontSerif(true)}
-                className={`px-2 py-0.5 text-xs ${fontSerif ? 'bg-white font-bold text-[#0D1B2A] shadow-xs' : 'text-[#74777d]'}`}
+                className={`px-2 py-0.5 text-xs cursor-pointer ${fontSerif ? 'bg-white font-bold text-[#0D1B2A] shadow-xs' : 'text-[#74777d]'}`}
               >
                 Serifa
               </button>
               <button
                 onClick={() => setFontSerif(false)}
-                className={`px-2 py-0.5 text-xs ${!fontSerif ? 'bg-white font-bold text-[#0D1B2A] shadow-xs' : 'text-[#74777d]'}`}
+                className={`px-2 py-0.5 text-xs cursor-pointer ${!fontSerif ? 'bg-white font-bold text-[#0D1B2A] shadow-xs' : 'text-[#74777d]'}`}
               >
                 Sans
               </button>
@@ -78,19 +77,22 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
             <div className="flex items-center gap-1 border border-[#E5E7EB] px-1 py-0.5 bg-[#f1f3ff]">
               <button
                 onClick={() => setFontSize('sm')}
-                className={`px-1.5 text-xs ${fontSize === 'sm' ? 'font-bold text-[#0066FF]' : 'text-[#74777d]'}`}
+                className={`px-2 py-0.5 text-xs cursor-pointer min-h-[30px] min-w-[24px] ${fontSize === 'sm' ? 'font-bold text-[#0066FF]' : 'text-[#74777d]'}`}
+                title="Texto pequeno"
               >
                 A-
               </button>
               <button
                 onClick={() => setFontSize('md')}
-                className={`px-1.5 text-xs ${fontSize === 'md' ? 'font-bold text-[#0066FF]' : 'text-[#74777d]'}`}
+                className={`px-2 py-0.5 text-xs cursor-pointer min-h-[30px] min-w-[24px] ${fontSize === 'md' ? 'font-bold text-[#0066FF]' : 'text-[#74777d]'}`}
+                title="Texto médio"
               >
                 A
               </button>
               <button
                 onClick={() => setFontSize('lg')}
-                className={`px-1.5 text-xs ${fontSize === 'lg' ? 'font-bold text-[#0066FF]' : 'text-[#74777d]'}`}
+                className={`px-2 py-0.5 text-xs cursor-pointer min-h-[30px] min-w-[24px] ${fontSize === 'lg' ? 'font-bold text-[#0066FF]' : 'text-[#74777d]'}`}
+                title="Texto grande"
               >
                 A+
               </button>
@@ -99,7 +101,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
             {/* Print & Share */}
             <button
               onClick={handlePrint}
-              className="p-1 hover:text-[#0066FF] text-[#44474c] transition-colors hidden sm:inline"
+              className="p-1.5 hover:text-[#0066FF] text-[#44474c] transition-colors hidden sm:inline cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
               title="Imprimir formato editorial"
             >
               <Printer className="w-4 h-4" />
@@ -107,7 +109,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
 
             <button
               onClick={handleShare}
-              className="p-1 hover:text-[#0066FF] text-[#44474c] transition-colors"
+              className="p-1.5 hover:text-[#0066FF] text-[#44474c] transition-colors cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
               title="Copiar link"
             >
               {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Share2 className="w-4 h-4" />}
@@ -116,7 +118,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
             {/* Close */}
             <button
               onClick={onClose}
-              className="p-1.5 bg-[#0D1B2A] text-white hover:bg-[#C91414] transition-colors"
+              className="p-1.5 bg-[#0D1B2A] text-white hover:bg-[#C91414] transition-colors cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
               aria-label="Fechar artigo"
             >
               <X className="w-4 h-4" />
@@ -125,7 +127,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
         </div>
 
         {/* Article Body */}
-        <div className="p-6 sm:p-10 lg:p-12 space-y-6 max-w-3xl mx-auto w-full">
+        <div className="p-4 sm:p-8 lg:p-12 space-y-5 sm:space-y-6 max-w-3xl mx-auto w-full">
           
           {/* Header Metadata */}
           <div className="space-y-2 border-b border-[#E5E7EB] pb-4">
@@ -140,30 +142,30 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
               )}
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0D1B2A] leading-[1.15] tracking-[-0.02em]">
+            <h1 className="font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0D1B2A] leading-[1.18] tracking-[-0.02em]">
               {article.title}
             </h1>
 
-            <p className="font-serif italic text-lg sm:text-xl text-[#44474c] leading-relaxed pt-1">
+            <p className="font-serif italic text-base sm:text-xl text-[#44474c] leading-relaxed pt-1">
               {article.subtitle}
             </p>
           </div>
 
           {/* Author Byline & Audio narration bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 py-3 border-b border-[#E5E7EB] text-xs text-[#74777d]">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-[#0D1B2A] text-white font-serif font-bold text-sm flex items-center justify-center">
+          <div className="flex flex-wrap items-center justify-between gap-3 py-2.5 sm:py-3 border-b border-[#E5E7EB] text-xs text-[#74777d]">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[#0D1B2A] text-white font-serif font-bold text-xs sm:text-sm flex items-center justify-center shrink-0">
                 {article.author.avatar}
               </div>
               <div>
-                <p className="font-bold text-[#0D1B2A] text-sm">{article.author.name}</p>
-                <p className="text-[11px] text-[#74777d]">{article.author.role} {article.author.affiliation && `· ${article.author.affiliation}`}</p>
+                <p className="font-bold text-[#0D1B2A] text-xs sm:text-sm">{article.author.name}</p>
+                <p className="text-[10px] sm:text-[11px] text-[#74777d]">{article.author.role} {article.author.affiliation && `· ${article.author.affiliation}`}</p>
               </div>
             </div>
 
-            <div className="text-right">
+            <div className="text-left sm:text-right">
               <p className="font-medium text-[#0D1B2A]">{article.dateline}</p>
-              <p className="text-[11px]">{article.updatedAt} · {article.readTime}</p>
+              <p className="text-[10px] sm:text-[11px]">{article.updatedAt} · {article.readTime}</p>
             </div>
           </div>
 
@@ -172,7 +174,8 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
             <div className="flex items-center gap-2.5">
               <button
                 onClick={() => setIsPlayingAudio(!isPlayingAudio)}
-                className="w-8 h-8 bg-[#0D1B2A] text-white hover:bg-[#0066FF] transition-colors flex items-center justify-center shrink-0"
+                className="w-8 h-8 bg-[#0D1B2A] text-white hover:bg-[#0066FF] transition-colors flex items-center justify-center shrink-0 cursor-pointer min-h-[36px] min-w-[36px]"
+                aria-label={isPlayingAudio ? "Pausar áudio" : "Ouvir áudio"}
               >
                 {isPlayingAudio ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
               </button>
@@ -180,14 +183,14 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                 <span className="text-xs font-bold text-[#0D1B2A] uppercase tracking-wider block">
                   {isPlayingAudio ? 'A reproduzir narração...' : 'Ouvir reportagem em áudio'}
                 </span>
-                <span className="text-[11px] text-[#74777d]">
-                  Síntese de voz editorial de serviço público · Duração estimada {article.readTime}
+                <span className="text-[10px] sm:text-[11px] text-[#74777d]">
+                  Voz editorial de serviço público · Duração {article.readTime}
                 </span>
               </div>
             </div>
 
             {isPlayingAudio && (
-              <span className="w-2.5 h-2.5 rounded-full bg-[#0066FF] animate-ping" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0066FF] animate-ping shrink-0" />
             )}
           </div>
 
@@ -211,7 +214,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
           )}
 
           {/* Paragraphs */}
-          <div className={`space-y-6 ${fontSerif ? 'font-serif' : 'font-sans'} ${fontSizeClasses[fontSize]} text-[#111827]`}>
+          <div className={`space-y-5 sm:space-y-6 ${fontSerif ? 'font-serif' : 'font-sans'} ${fontSizeClasses[fontSize]} text-[#111827]`}>
             {article.fullContent.map((paragraph, index) => {
               if (index === 0) {
                 return (
@@ -224,8 +227,8 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
               // Highlight quote on paragraph 2
               if (index === 2) {
                 return (
-                  <div key={index} className="my-6 pl-4 border-l-2 border-[#0066FF] py-2 bg-[#f1f3ff]/50">
-                    <p className="italic font-serif text-lg text-[#0D1B2A]">
+                  <div key={index} className="my-5 sm:my-6 pl-4 border-l-2 border-[#0066FF] py-2 bg-[#f1f3ff]/50">
+                    <p className="italic font-serif text-base sm:text-lg text-[#0D1B2A]">
                       {paragraph}
                     </p>
                   </div>
@@ -238,9 +241,9 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
 
           {/* Article Footer & Tags */}
           <div className="pt-6 border-t-2 border-[#0D1B2A] space-y-4">
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               <span className="text-xs font-bold uppercase tracking-wider text-[#74777d]">
-                Tópicos Arquivados:
+                Tópicos:
               </span>
               {article.tags.map((tag) => (
                 <span
@@ -252,12 +255,12 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
               ))}
             </div>
 
-            <div className="p-4 bg-[#f1f3ff] border border-[#E5E7EB] text-xs text-[#44474c]">
+            <div className="p-3 sm:p-4 bg-[#f1f3ff] border border-[#E5E7EB] text-xs text-[#44474c]">
               <p className="font-bold text-[#0D1B2A] mb-1">
                 Aviso Editorial de Escrutínio Público
               </p>
               <p>
-                As investigações e reportagens do <em>Manhã Informativo</em> obedecem ao Estatuto do Jornalista de Moçambique e aos mais rigorosos princípios de contraditório e verificação de factos. Os dados públicos analisados constam de relatórios oficiais auditados.
+                As investigações e reportagens do <em>Manhã Informativo</em> obedecem ao Estatuto do Jornalista de Moçambique e aos mais rigorosos princípios de contraditório e verificação de factos.
               </p>
             </div>
           </div>

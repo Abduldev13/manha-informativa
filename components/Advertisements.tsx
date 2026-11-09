@@ -38,9 +38,9 @@ export function KoffeinVideoAd() {
     <div className="bg-[#1b2620] text-white border-2 border-[#2b3a32] p-4 sm:p-6 shadow-md">
       
       {/* Top Broadsheet Ad Header */}
-      <div className="flex items-center justify-between border-b border-white/20 pb-2 mb-4 text-[10px] uppercase font-bold tracking-widest text-[#a8b8ae]">
+      <div className="flex flex-wrap items-center justify-between border-b border-white/20 pb-2 mb-4 text-[10px] uppercase font-bold tracking-widest text-[#a8b8ae] gap-2">
         <span className="flex items-center gap-1.5 text-[#e5f0ea]">
-          <Coffee className="w-3.5 h-3.5 text-[#c59b6d]" />
+          <Coffee className="w-3.5 h-3.5 text-[#c59b6d] shrink-0" />
           <span>Espaço Publicitário · Guia Comercial Nampula</span>
         </span>
         <span className="border border-white/30 px-1.5 py-0.5 text-[9px]">
@@ -48,10 +48,10 @@ export function KoffeinVideoAd() {
         </span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-center">
         
         {/* Video Player Column (5 cols) */}
-        <div className="md:col-span-5 relative aspect-[3/4] max-w-[280px] mx-auto md:mx-0 w-full bg-black overflow-hidden border border-white/20 shadow-xl group">
+        <div className="md:col-span-5 relative aspect-[3/4] max-w-[260px] xs:max-w-[280px] mx-auto md:mx-0 w-full bg-black overflow-hidden border border-white/20 shadow-xl group">
           <video
             ref={videoRef}
             src="/assets/aistudio/HOR_RIOS_DE_FUNCIONAMENTOTER_A_-_S_BADO_07-00_-_21-00DOMINGO_08-00_-_21-00NAMPULARUA_DAR-ES-SALA__1__45094719.mp4"
@@ -63,20 +63,22 @@ export function KoffeinVideoAd() {
           />
 
           {/* Video Control Overlays */}
-          <div className="absolute top-2 right-2 flex items-center gap-1">
+          <div className="absolute top-2 right-2 flex items-center gap-1.5">
             <button
               onClick={toggleMute}
-              className="p-1.5 bg-black/70 hover:bg-black text-white transition-colors"
+              className="p-2 bg-black/70 hover:bg-black text-white transition-colors min-h-[36px] min-w-[36px] flex items-center justify-center cursor-pointer"
               title={isMuted ? "Ativar som" : "Desativar som"}
+              aria-label={isMuted ? "Ativar som" : "Desativar som"}
             >
-              {isMuted ? <VolumeX className="w-3.5 h-3.5 text-red-300" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-300" />}
+              {isMuted ? <VolumeX className="w-4 h-4 text-red-300" /> : <Volume2 className="w-4 h-4 text-emerald-300" />}
             </button>
             <button
               onClick={togglePlay}
-              className="p-1.5 bg-black/70 hover:bg-black text-white transition-colors"
+              className="p-2 bg-black/70 hover:bg-black text-white transition-colors min-h-[36px] min-w-[36px] flex items-center justify-center cursor-pointer"
               title={isPlaying ? "Pausar" : "Reproduzir"}
+              aria-label={isPlaying ? "Pausar" : "Reproduzir"}
             >
-              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 fill-white" />}
+              {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-white" />}
             </button>
           </div>
 
@@ -86,12 +88,12 @@ export function KoffeinVideoAd() {
         </div>
 
         {/* Brand Information & Hours Column (7 cols) */}
-        <div className="md:col-span-7 space-y-4">
+        <div className="md:col-span-7 space-y-3.5 sm:space-y-4">
           <div>
-            <span className="text-xs uppercase font-mono tracking-widest text-[#c59b6d] font-bold block mb-1">
+            <span className="text-[10px] sm:text-xs uppercase font-mono tracking-widest text-[#c59b6d] font-bold block mb-1">
               EST. 2024 · NAMPULA
             </span>
-            <h4 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+            <h4 className="font-serif text-2xl xs:text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
               KOFFEIN
             </h4>
             <p className="font-sans text-xs sm:text-sm text-[#d0ded5] mt-1 leading-relaxed">
@@ -101,12 +103,12 @@ export function KoffeinVideoAd() {
 
           {/* Operating Hours Box */}
           <div className="bg-[#121c16] border border-[#2b3a32] p-3 space-y-2 text-xs">
-            <div className="flex items-center gap-2 text-[#c59b6d] font-bold uppercase tracking-wider text-[11px] border-b border-white/10 pb-1">
-              <Clock className="w-3.5 h-3.5" />
+            <div className="flex items-center gap-2 text-[#c59b6d] font-bold uppercase tracking-wider text-[10px] sm:text-[11px] border-b border-white/10 pb-1">
+              <Clock className="w-3.5 h-3.5 shrink-0" />
               <span>Horários de Funcionamento</span>
             </div>
             
-            <div className="grid grid-cols-2 gap-2 text-[12px]">
+            <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 text-[11px] sm:text-[12px]">
               <div>
                 <span className="block font-semibold text-white">Terça a Sábado:</span>
                 <span className="font-mono text-[#d0ded5]">07:00 – 21:00</span>
@@ -128,10 +130,10 @@ export function KoffeinVideoAd() {
           </div>
 
           {/* Action buttons */}
-          <div className="pt-2 flex flex-wrap items-center gap-3">
+          <div className="pt-2 flex flex-col xs:flex-row items-stretch xs:items-center gap-2.5 sm:gap-3">
             <button
               onClick={copyLocation}
-              className="px-4 py-2 bg-[#c59b6d] hover:bg-[#b08759] text-[#1b2620] font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="px-4 py-2.5 bg-[#c59b6d] hover:bg-[#b08759] text-[#1b2620] font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer min-h-[44px]"
             >
               {copied ? (
                 <>
@@ -148,7 +150,7 @@ export function KoffeinVideoAd() {
 
             <a
               href="tel:+258879761113"
-              className="px-4 py-2 bg-transparent border border-white/40 hover:bg-white/10 text-white font-medium text-xs transition-colors flex items-center gap-1.5"
+              className="px-4 py-2.5 bg-transparent border border-white/40 hover:bg-white/10 text-white font-medium text-xs transition-colors flex items-center justify-center gap-1.5 min-h-[44px]"
             >
               <Phone className="w-3.5 h-3.5" />
               <span>Informações & Reservas</span>
@@ -178,17 +180,17 @@ export function GrecyEventsAd() {
     <div className="bg-[#fffcf7] text-[#141b2b] border-2 border-[#e6d8c3] p-4 sm:p-6 shadow-md">
       
       {/* Broadsheet Ad Header */}
-      <div className="flex items-center justify-between border-b border-[#e6d8c3] pb-2 mb-4 text-[10px] uppercase font-bold tracking-widest text-[#78350F]">
+      <div className="flex flex-wrap items-center justify-between border-b border-[#e6d8c3] pb-2 mb-4 text-[10px] uppercase font-bold tracking-widest text-[#78350F] gap-2">
         <span className="flex items-center gap-1.5">
-          <Cake className="w-3.5 h-3.5 text-[#b45309]" />
-          <span>Publicidade Especial · Confeitaria & Eventos de Referência</span>
+          <Cake className="w-3.5 h-3.5 text-[#b45309] shrink-0" />
+          <span>Publicidade Especial · Confeitaria & Eventos Nampula</span>
         </span>
         <span className="border border-[#e6d8c3] px-1.5 py-0.5 text-[9px] text-[#78350F]">
           Anúncio Comercial
         </span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-center">
         
         {/* Banner Graphic Column (6 cols) */}
         <div className="md:col-span-6 relative overflow-hidden border border-[#e6d8c3] shadow-md bg-white">
@@ -201,15 +203,15 @@ export function GrecyEventsAd() {
         </div>
 
         {/* Offer Details Column (6 cols) */}
-        <div className="md:col-span-6 space-y-4">
+        <div className="md:col-span-6 space-y-3.5 sm:space-y-4">
           <div>
-            <span className="text-xs uppercase font-serif tracking-widest text-[#b45309] font-bold block mb-1">
+            <span className="text-[10px] sm:text-xs uppercase font-serif tracking-widest text-[#b45309] font-bold block mb-1">
               SERVICES & EVENTS · NAMPULA
             </span>
-            <h4 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#0D1B2A] leading-tight">
+            <h4 className="font-serif text-2xl xs:text-3xl sm:text-4xl font-bold tracking-tight text-[#0D1B2A] leading-tight">
               Grecy Services & Events
             </h4>
-            <p className="font-serif italic text-lg text-[#b45309] mt-0.5 font-medium">
+            <p className="font-serif italic text-base sm:text-lg text-[#b45309] mt-0.5 font-medium">
               &ldquo;Sabores que Marcam Momentos&rdquo;
             </p>
           </div>
@@ -228,7 +230,7 @@ export function GrecyEventsAd() {
               'Refeições Especiais',
               'Eventos Corporativos'
             ].map((service) => (
-              <div key={service} className="p-2 bg-white border border-[#e6d8c3] flex items-center gap-1.5 text-[11px] font-semibold text-[#0D1B2A]">
+              <div key={service} className="p-2 bg-white border border-[#e6d8c3] flex items-center gap-1.5 text-[10px] sm:text-[11px] font-semibold text-[#0D1B2A]">
                 <Sparkles className="w-3 h-3 text-[#b45309] shrink-0" />
                 <span className="truncate">{service}</span>
               </div>
@@ -236,7 +238,7 @@ export function GrecyEventsAd() {
           </div>
 
           {/* Contact Box */}
-          <div className="p-3 bg-[#fdf8f0] border border-[#e6d8c3] flex flex-wrap items-center justify-between gap-3">
+          <div className="p-3 bg-[#fdf8f0] border border-[#e6d8c3] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
             <div>
               <span className="block text-[10px] uppercase font-bold text-[#78350F]">
                 Encomendas & Informações Diretas
@@ -250,10 +252,10 @@ export function GrecyEventsAd() {
               <span className="block text-[11px] text-[#74777d]">Nampula, República de Moçambique</span>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2">
               <button
                 onClick={copyPhone}
-                className="px-3 py-1.5 bg-[#0D1B2A] hover:bg-[#b45309] text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                className="px-3.5 py-2.5 bg-[#0D1B2A] hover:bg-[#b45309] text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer min-h-[44px] flex items-center justify-center"
               >
                 {copied ? 'Copiado!' : 'Copiar Telefone'}
               </button>
@@ -262,10 +264,10 @@ export function GrecyEventsAd() {
                 href="https://wa.me/258879761113?text=Olá,%20gostaria%20de%20fazer%20uma%20encomenda%20com%20a%20Grecy%20Services%20&%20Events."
                 target="_blank"
                 rel="noreferrer"
-                className="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1"
+                className="px-3.5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 min-h-[44px]"
               >
                 <span>WhatsApp</span>
-                <ExternalLink className="w-3 h-3" />
+                <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
@@ -284,21 +286,21 @@ export function GrecyEventsAd() {
 
 export default function CommercialShowcase() {
   return (
-    <section className="w-full my-10 space-y-8">
+    <section className="w-full my-8 sm:my-10 space-y-6 sm:space-y-8">
       {/* Classic Broadsheet Divider */}
       <div className="broadsheet-double-rule py-1" />
 
-      <div className="flex items-center justify-between border-b border-[#E5E7EB] pb-2">
-        <h3 className="font-serif text-lg font-bold uppercase tracking-tight text-[#0D1B2A] flex items-center gap-2">
+      <div className="flex flex-wrap items-center justify-between border-b border-[#E5E7EB] pb-2 gap-2">
+        <h3 className="font-serif text-base sm:text-lg font-bold uppercase tracking-tight text-[#0D1B2A] flex items-center gap-2">
           <span>Caderno Comercial & Anúncios de Nampula</span>
         </h3>
-        <span className="text-[11px] text-[#74777d] uppercase tracking-wider font-semibold">
+        <span className="text-[10px] sm:text-[11px] text-[#74777d] uppercase tracking-wider font-semibold">
           Edição de Domingo
         </span>
       </div>
 
       {/* Grid of the two featured advertisements */}
-      <div className="space-y-8">
+      <div className="space-y-6 sm:space-y-8">
         <KoffeinVideoAd />
         <GrecyEventsAd />
       </div>
