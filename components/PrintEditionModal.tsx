@@ -150,10 +150,24 @@ export default function PrintEditionModal({ isOpen, onClose }: PrintEditionModal
                 </p>
               </div>
 
+              {/* Front Page Breaking Box */}
+              <div className="bg-[#fff8f8] border-2 border-[#ba1a1a] p-2.5 sm:p-3 text-left">
+                <div className="flex items-center justify-between text-[10px] uppercase font-bold text-[#ba1a1a] pb-1 border-b border-[#fecaca]">
+                  <span>DESTAQUE JUDICIAL · TRIBUNAL SUPREMO</span>
+                  <span className="font-mono">17 NOV 2026</span>
+                </div>
+                <h3 className="font-serif font-bold text-base sm:text-lg text-[#0D1B2A] mt-1 leading-snug">
+                  Julgamento de Venâncio Mondlane marcado para 17 de Novembro no Tribunal Supremo
+                </h3>
+                <p className="font-sans text-[11px] text-[#4b5563] mt-1">
+                  Antigo candidato presidencial responde a cinco acusações relacionadas com manifestações de 2024. Tribunal rejeita emissão em direto na TV mas autoriza registo escrito.
+                </p>
+              </div>
+
               {/* Front Page Headline */}
               <div className="border-y-2 border-[#0D1B2A] py-3 sm:py-4 text-center">
                 <span className="text-[11px] sm:text-xs uppercase font-bold text-[#0066FF] tracking-widest block mb-1">
-                  GRANDE MANCHETE NACIONAL
+                  GRANDE INVESTIGAÇÃO ECONÓMICA
                 </span>
                 <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl font-bold text-[#0D1B2A] leading-tight">
                   A Transformação do Corredor de Nacala e o Novo Polo Energético da África Austral

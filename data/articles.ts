@@ -20,6 +20,8 @@ export interface Article {
   updatedAt: string;
   imageUrl?: string;
   imageCaption?: string;
+  videoUrl?: string;
+  videoDuration?: string;
   audioDuration?: string;
   tags: string[];
 }
@@ -72,6 +74,22 @@ export const FINANCIAL_TICKER: MarketItem[] = [
 
 export const BREAKING_DISPATCHES: DispatchItem[] = [
   {
+    id: 'disp-venancio-mondlane',
+    time: '12:15',
+    category: 'POLÍTICA · TRIBUNAL SUPREMO',
+    title: 'Julgamento de Venâncio Mondlane marcado para 17 de Novembro no Tribunal Supremo',
+    summary: 'Antigo candidato presidencial responde a cinco acusações no âmbito das manifestações pós-eleitorais de 2024. Tribunal autorizou cobertura escrita.',
+    urgency: 'high'
+  },
+  {
+    id: 'disp-video-drogas',
+    time: '11:42',
+    category: 'VÍDEO · NAMPULA',
+    title: 'Consumo de drogas entre jovens preocupa a sociedade em Nampula',
+    summary: 'Reportagem e entrevista em vídeo no terreno com jovens e comunidade sobre segurança, assaltos e prevenção.',
+    urgency: 'high'
+  },
+  {
     id: 'disp-ucm-penitenciario',
     time: '11:35',
     category: 'NAMPULA · UCM',
@@ -82,18 +100,18 @@ export const BREAKING_DISPATCHES: DispatchItem[] = [
   {
     id: 'disp-belenenses',
     time: '11:28',
-    category: 'NAMPULA · SEGURANÇA',
-    title: 'Nampula: Brigadas cívicas e SERNIC travam pontos de venda de drogas no Bairro dos Belenenses',
-    summary: 'Mobilização comunitária inédita no Bairro dos Belenenses resulta no resgate de jovens e encaminhamento para centros de apoio médico e profissional.',
+    category: 'DROGAS NA CIDADE DE NAMPULA',
+    title: 'Consumo de drogas preocupa moradores do bairro de Belenenses',
+    summary: 'Consequências sociais e familiares, agressões e furtos geram preocupação entre moradores e líderes comunitários em Nampula.',
     urgency: 'high'
   },
   {
     id: 'disp-detentos',
     time: '11:05',
-    category: 'JUSTIÇA & REABILITAÇÃO',
-    title: 'Penitenciária de Nampula: Detentos arrependidos concluem entrega de 400 carteiras escolares',
-    summary: 'Reclusos em regime de capacitação profissional em marcenaria expressam pedido de perdão cívico e doam carteiras para alunos da província.',
-    urgency: 'medium'
+    category: 'NAMPULA · SAÚDE PENITENCIÁRIA',
+    title: 'Consumo de drogas entre jovens preocupa autoridades de saúde em Nampula',
+    summary: 'Técnica de saúde do ICAP na Penitenciária Regional alerta para aumento de casos graves de abstinência, complicações cardiovasculares e circulação da droga "Maka".',
+    urgency: 'high'
   },
   {
     id: 'disp-1',
@@ -195,63 +213,150 @@ export const SECONDARY_LEAD_STORY: Article = {
   tags: ['Banco de Moçambique', 'Metical', 'Agroindústria', 'CTA']
 };
 
-export const ARTICLE_DROGAS_BELENENSES: Article = {
-  id: 'investigacao-drogas-belenenses',
-  category: 'INVESTIGAÇÃO SOCIAL · NAMPULA',
+export const ARTICLE_VENANCIO_MONDLANE: Article = {
+  id: 'julgamento-venancio-mondlane-tribunal-supremo',
+  category: 'POLÍTICA & JUSTIÇA · MOÇAMBIQUE',
+  categoryColor: '#ba1a1a',
+  isUrgent: true,
+  isExclusive: false,
+  title: 'Julgamento de Venâncio Mondlane marcado para 17 de Novembro no Tribunal Supremo',
+  subtitle: 'Antigo candidato presidencial será julgado no âmbito do processo relacionado com as manifestações pós-eleitorais de 2024. O caso desperta grande atenção no cenário político e judicial de Moçambique.',
+  leadParagraph: 'O julgamento do político moçambicano Venâncio Mondlane está marcado para o dia 17 de Novembro de 2026, no Tribunal Supremo, em Maputo. O processo está relacionado com as manifestações que ocorreram em Moçambique após as eleições gerais de Outubro de 2024.',
+  fullContent: [
+    'O julgamento do político moçambicano Venâncio Mondlane está marcado para o dia 17 de Novembro de 2026, no Tribunal Supremo, em Maputo. O processo está relacionado com as manifestações que ocorreram em Moçambique após as eleições gerais de Outubro de 2024.',
+    'Inicialmente previsto para 6 de Outubro, o julgamento foi adiado na sequência de um pedido apresentado pela defesa, que alegou incompatibilidade de agendas. Posteriormente, foi definida a nova data de 17 de Novembro.',
+    'Venâncio Mondlane responde a cinco acusações apresentadas pelo Ministério Público, nomeadamente apologia pública ao crime, incitamento à desobediência colectiva, instigação pública à prática de crime, instigação ao terrorismo e incitamento ao terrorismo.',
+    'O caso ganhou ainda maior atenção depois de o Tribunal Supremo ter recusado o pedido da defesa para que a audiência fosse transmitida em directo pela televisão e pelas plataformas digitais. Apesar da decisão, o tribunal autorizou a presença do público e a cobertura jornalística através de registos escritos.',
+    'O presidente do Tribunal Supremo, Adelino Muchanga, afirmou que a instituição está preparada para conduzir o julgamento, garantindo que a decisão será baseada nos factos constantes do processo e na lei.',
+    'O julgamento representa um dos processos judiciais de maior relevância política no país, tendo em conta o contexto das manifestações pós-eleitorais e o debate público sobre justiça, direitos políticos e liberdade de manifestação.',
+    'Nota: As acusações constituem alegações do Ministério Público e deverão ser apreciadas pelo tribunal. Venâncio Mondlane beneficia da presunção de inocência até decisão judicial definitiva.'
+  ],
+  author: {
+    name: 'Redação Central de Justiça',
+    role: 'Correspondente Judicial em Maputo',
+    avatar: 'RJ',
+    affiliation: 'Manhã Informativo · Cobertura Política e Judiciária'
+  },
+  dateline: 'Maputo, Moçambique',
+  readTime: '4 min de leitura',
+  updatedAt: 'Hoje às 12:15 CAT',
+  imageUrl: '/assets/aistudio/VENANCIO_b21a954f.jpg',
+  imageCaption: 'Venâncio Mondlane acompanhado por escolta da Polícia da República de Moçambique e advogados em Maputo durante deslocação judicial.',
+  audioDuration: '05:40 min',
+  tags: ['Política', 'Justiça', 'Moçambique', 'Venâncio Mondlane', 'Tribunal Supremo', 'Eleições 2024', 'Maputo']
+};
+
+export const ARTICLE_VIDEO_REPORTAGEM_DROGAS: Article = {
+  id: 'video-reportagem-drogas-jovens-nampula',
+  category: 'REPORTAGEM EM VÍDEO · NAMPULA',
   categoryColor: '#ba1a1a',
   isExclusive: true,
   isUrgent: true,
-  title: 'Investigação em Nampula: A Mobilização Comunitária Contra o Consumo e Tráfico de Drogas no Bairro dos Belenenses',
-  subtitle: 'Líderes de quarteirão, brigadas do SERNIC e assistentes sociais unem esforços para estancar a venda de estupefacientes e acolher jovens toxicodependentes em recuperação no coração urbano da capital do Norte.',
-  leadParagraph: 'No Bairro dos Belenenses, uma das zonas residenciais mais populosas e vibrantes da cidade de Nampula, a comunidade decidiu romper o silêncio diante da proliferação de pontos clandestinos de consumo e comércio de drogas. Mães de família organizaram comités de vigilância cívica e, em coordenação estreita com o Serviço Nacional de Investigação Criminal (SERNIC) e a Direção Provincial de Saúde, lançaram a campanha permanente "Belenenses Sem Drogas", desmantelando esconderijos e encaminhando dezenas de adolescentes para apoio psicológico e oficinas de formação profissional.',
+  title: 'Consumo de drogas entre jovens preocupa a sociedade em Nampula',
+  subtitle: 'A problemática do consumo de substâncias psicoativas entre os jovens levanta preocupações sobre o futuro da juventude e a necessidade de maior consciencialização nas comunidades.',
+  leadParagraph: 'O consumo de drogas entre jovens continua a ser uma questão que merece atenção da sociedade, sobretudo pelos possíveis impactos na saúde, na educação e no desenvolvimento social. Em Nampula, a problemática exige maior envolvimento das famílias, instituições de ensino, autoridades e organizações comunitárias na promoção de ações de sensibilização e prevenção.',
+  videoUrl: '/assets/aistudio/whatsapp-video-2026-11-09-at-172750_AGxcINv2_659203cc.mp4',
+  videoDuration: '01:43 min',
   fullContent: [
-    'No Bairro dos Belenenses, uma das zonas residenciais mais populosas e vibrantes da cidade de Nampula, a comunidade decidiu romper o silêncio diante da proliferação de pontos clandestinos de consumo e comércio de drogas. Mães de família organizaram comités de vigilância cívica e, em coordenação estreita com o Serviço Nacional de Investigação Criminal (SERNIC) e a Direção Provincial de Saúde, lançaram a campanha permanente "Belenenses Sem Drogas", desmantelando esconderijos e encaminhando dezenas de adolescentes para apoio psicológico e oficinas de formação profissional.',
-    'A operação integrada resultou, nas últimas 72 horas, na apreensão de quantidades significativas de substâncias ilícitas que entravam por rotas marítimas e rodoviárias secundárias. O chefe do quarteirão 4 dos Belenenses, ancião Amisse Culane, sublinhou que a vitória não se faz apenas com detenções: "O nosso maior objetivo é salvar os nossos filhos. Quando identificamos um jovem dependente, levamo-lo ao posto de saúde e depois inserimo-lo em cursos de carpintaria e eletricidade para que tenha um ofício digno."',
-    '"A repressão policial é apenas um braço da intervenção; a verdadeira barreira é a coesão das famílias e a criação de perspetivas reais de emprego para a juventude de Nampula", declarou a porta-voz provincial do SERNIC durante o balanço operacional realizado no centro comunitário local.',
-    'A iniciativa comunitária dos Belenenses já está a ser estudada pelas autoridades municipais de Nampula para ser replicada nos bairros vizinhos de Muhala, Namutequeliua e Carrupeia, transformando a mobilização popular no principal baluarte contra o crime organizado.'
+    'O consumo de drogas entre jovens continua a ser uma questão que merece atenção da sociedade, sobretudo pelos possíveis impactos na saúde, na educação e no desenvolvimento social.',
+    'Em Nampula, a problemática exige maior envolvimento das famílias, instituições de ensino, autoridades e organizações comunitárias na promoção de ações de sensibilização e prevenção.',
+    'No âmbito de uma abordagem jornalística sobre esta realidade, foi realizada uma entrevista para recolher opiniões e compreender diferentes percepções sobre o fenómeno, dando voz aos jovens e à comunidade.',
+    'A prevenção, o diálogo familiar, a educação e o acompanhamento dos jovens são fundamentais para reduzir os riscos associados ao consumo de drogas e construir uma sociedade mais consciente.',
+    'Fonte: Trabalho de reportagem e entrevista de campo — Manhã Informativo.'
   ],
   author: {
-    name: 'Dr. Bento Tamele & Sandra Machava',
-    role: 'Enviados Especiais ao Bairro dos Belenenses',
-    avatar: 'BT',
-    affiliation: 'Redação de Investigação de Nampula'
+    name: 'Equipa de Reportagem de Campo',
+    role: 'Jornalismo Investigativo & Audiovisual',
+    avatar: 'MI',
+    affiliation: 'Manhã Informativo · Delegação de Nampula'
   },
-  dateline: 'Bairro dos Belenenses, Nampula',
-  readTime: '6 min de leitura',
-  updatedAt: 'Hoje às 11:10 CAT',
+  dateline: 'Nampula / Moçambique',
+  readTime: 'Vídeo 01:43 min · 3 min leitura',
+  updatedAt: 'Edição Especial de Hoje',
   imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-09_at_09.39.40_624df156.jpeg',
-  imageCaption: 'Fig. 1 — Trabalho de campo no Bairro dos Belenenses (Nampula): Enviada especial do Manhã Informativo entrevista residente local sobre a mobilização comunitária e o combate ao consumo de drogas.',
-  audioDuration: '09:40 min',
-  tags: ['Nampula', 'Belenenses', 'Drogas', 'SERNIC', 'Comunidade']
+  imageCaption: 'Vídeo Exclusivo: Reportagem de campo da equipa do Manhã Informativo em Nampula ouvindo residentes sobre o impacto social do consumo de drogas.',
+  audioDuration: '04:10 min',
+  tags: ['Vídeo Reportagem', 'Nampula', 'Drogas Jovens', 'Comunidade', 'Manhã Informativo', 'Sociedade']
+};
+
+export const ARTICLE_DROGAS_BELENENSES: Article = {
+  id: 'investigacao-drogas-belenenses',
+  category: 'DROGAS NA CIDADE DE NAMPULA',
+  categoryColor: '#ba1a1a',
+  isExclusive: true,
+  isUrgent: true,
+  title: 'Consumo de drogas preocupa moradores do bairro de Belenenses',
+  subtitle: 'Conflitos, agressões, furtos e sofrimento emocional geram alarme social; moradores, jovens e secretário do bairro relatam desafios da crise.',
+  leadParagraph: 'O consumo de drogas no bairro de Belenenses, na cidade de Nampula, está a gerar preocupação entre os moradores, devido às consequências sociais e familiares associadas a esta prática, nomeadamente conflitos, agressões, furtos e sofrimento emocional. Durante uma reportagem realizada esta semana naquela comunidade, consumidores, um indivíduo que conseguiu recuperar-se da dependência, o secretário do bairro e um jovem residente partilharam os seus testemunhos e opiniões sobre esta realidade.',
+  fullContent: [
+    'O consumo de drogas no bairro de Belenenses, na cidade de Nampula, está a gerar preocupação entre os moradores, devido às consequências sociais e familiares associadas a esta prática, nomeadamente conflitos, agressões, furtos e sofrimento emocional. Durante uma reportagem realizada esta semana naquela comunidade, consumidores, um indivíduo que conseguiu recuperar-se da dependência, o secretário do bairro e um jovem residente partilharam os seus testemunhos e opiniões sobre esta realidade.',
+    'Entre os factores apontados para o envolvimento dos jovens no consumo de drogas estão o sofrimento emocional, o stress e a falta de apoio no ambiente familiar. Segundo um dos jovens entrevistados, para alguns consumidores, o contacto com estas substâncias não começa necessariamente por curiosidade ou procura de prazer, mas surge como uma tentativa de lidar com problemas pessoais e situações difíceis vividas no seio familiar.',
+    'O testemunho evidencia uma dimensão social do problema, mostrando que o consumo de drogas não afecta apenas os indivíduos envolvidos, mas também as suas famílias e a comunidade em que estão inseridos.',
+    'Para além dos factores emocionais e familiares, a situação levanta preocupações sobre a segurança e a convivência comunitária, sobretudo perante os relatos de agressões e furtos associados ao consumo de substâncias.',
+    'A reportagem procurou compreender as razões que levam alguns jovens a envolver-se no consumo de drogas, as consequências dessa prática e os desafios enfrentados pelas famílias e pelas estruturas comunitárias na prevenção e no combate a este fenómeno.'
+  ],
+  author: {
+    name: 'Redação de Investigação · Nampula',
+    role: 'Reportagem Especial no Bairro de Belenenses',
+    avatar: 'NB',
+    affiliation: 'Nampula / Moçambique'
+  },
+  dateline: 'Bairro de Belenenses, Nampula',
+  readTime: '5 min de leitura',
+  updatedAt: 'Hoje às 11:28 CAT',
+  imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-09_at_09.39.40_624df156.jpeg',
+  imageCaption: 'Fig. 1 — Reportagem no bairro de Belenenses, cidade de Nampula: Testemunhos de residentes e jovens sobre o impacto social do consumo de drogas.',
+  audioDuration: '06:30 min',
+  tags: ['Drogas na Cidade de Nampula', 'Nampula', 'Belenenses', 'Consumo de Drogas', 'Sociedade']
 };
 
 export const ARTICLE_DETENTOS_ARREPENDIDOS: Article = {
-  id: 'detentos-arrependidos-nampula',
-  category: 'REABILITAÇÃO PENITENCIÁRIA & JUSTIÇA',
+  id: 'drogas-jovens-saude-nampula',
+  category: 'SAÚDE PÚBLICA & SISTEMA PENITENCIÁRIO',
   categoryColor: '#0050cc',
   isExclusive: true,
-  title: 'Vozes do Arrependimento: Detentos da Cadeia de Nampula Abraçam Ofícios de Marcenaria e Pedem Perdão à Sociedade',
-  subtitle: 'Programa de reinserção social do Serviço Nacional Penitenciário forma reclusos em ofícios práticos, transformando vidas através da confecção de mobiliário escolar para crianças desfavorecidas.',
-  leadParagraph: 'Nas oficinas do Estabelecimento Penitenciário Regional de Nampula, o som das serras manuais e o aroma a madeira de mogno substituíram o desespero pelo trabalho metódico. Mais de 180 detentos participam diariamente no projeto de reintegração produtiva, aprendendo carpintaria, marcenaria e serralharia. Muitos dos reclusos, com lágrimas de genuíno arrependimento, expressam publicamente o desejo de expiar os erros do passado e construir um futuro honrado junto das suas famílias.',
+  title: 'CONSUMO DE DROGAS ENTRE JOVENS PREOCUPA AUTORIDADES DE SAÚDE EM NAMPULA',
+  subtitle: 'Frustração, influência de amizades e problemas familiares apontados como principais causas. Penitenciária Regional de Nampula recebe mensalmente casos graves de abstinência e complicações orgânicas',
+  leadParagraph: 'Nampula — O consumo de drogas entre jovens continua a ser um dos maiores desafios de saúde pública e ordem social em Moçambique. A preocupação foi manifestada numa entrevista exclusiva concedida ao Manhã Informativo por uma técnica de saúde do ICAP, afecta à Penitenciária Regional de Nampula, unidade que recebe reclusos de Cabo Delgado, Nampula e parte da Zambézia. Segundo a especialista, que lida diariamente com dependentes químicos em regime penitenciário, os casos têm aumentado e chegam já com danos físicos graves, incluindo problemas cardiovasculares e até Acidentes Vasculares Cerebrais (AVC), fenómeno agravado pela circulação da droga "Maka".',
   fullContent: [
-    'Nas oficinas do Estabelecimento Penitenciário Regional de Nampula, o som das serras manuais e o aroma a madeira de mogno substituíram o desespero pelo trabalho metódico. Mais de 180 detentos participam diariamente no projeto de reintegração produtiva, aprendendo carpintaria, marcenaria e serralharia. Muitos dos reclusos, com lágrimas de genuíno arrependimento, expressam publicamente o desejo de expiar os erros do passado e construir um futuro honrado junto das suas famílias.',
-    'Fernando M., de 28 anos, que cumpre pena por delitos contra o património, mostra com orgulho as primeiras trinta carteiras escolares produzidas com as suas próprias mãos: "Quando olho para estas mesas que vão servir alunos que estudavam no chão nas escolas rurais de Meconta, sinto que estou a devolver algo de bom ao meu país. Errei gravemente, peço perdão de coração à sociedade e à minha mãe, mas hoje sei construir e quero trabalhar com as minhas mãos quando terminar a pena."',
-    'O diretor do estabelecimento prisional de Nampula salientou que os índices de reincidência entre os reclusos que concluem os cursos profissionais caíram para menos de 4%: "A prisão moderna não é masmorra de castigo cego, mas espaço de reconstituição moral do homem. Quem entra aqui com remorso e sai com uma profissão de marceneiro ou pedreiro tem a dignidade resgatada."',
-    'O programa conta com a parceria do Instituto Nacional de Emprego e Formação Profissional (INEFP) e do empresariado de Nampula, que já se comprometeu a contratar os formandos que obtenham certidão de bom comportamento e libertação condicional.'
+    'Nampula — O consumo de drogas entre jovens continua a ser um dos maiores desafios de saúde pública e ordem social em Moçambique. A preocupação foi manifestada numa entrevista exclusiva concedida ao Manhã Informativo por uma técnica de saúde do ICAP, afecta à Penitenciária Regional de Nampula, unidade que recebe reclusos de Cabo Delgado, Nampula e parte da Zambézia.',
+    'Segundo a especialista, que lida diariamente com dependentes químicos em regime penitenciário, os casos têm aumentado e chegam já com danos físicos graves, incluindo problemas cardiovasculares e até Acidentes Vasculares Cerebrais (AVC).',
+    'O fenómeno está associado à recente circulação da droga conhecida como "Maka" na cidade de Nampula, que tem provocado quadros clínicos complexos e difíceis de gerir.',
+    'A entrevista na íntegra:',
+    'P — Quais são os principais fatores que podem levar um jovem a consumir drogas?',
+    'R — Os principais fatores que podem levar um jovem a consumir drogas, eu diria até pode ser frustração, pode ser por amizades. Às vezes o jovem quando dão por si já estão metidos na droga, já são dependentes por certas amizades, entram na onda de algumas pessoas que consomem drogas e eu penso que é mais frustrações. O jovem tem ambição, tem um desejo de alguma coisa, não consegue alcançar aquilo que ele sonhou, então acaba entrando em depressão e mete-se nas drogas.',
+    'E alguns problemas são a partir da família, dentro da família. A frustração está dentro da família, ele acaba saindo para fora para procurar aquilo que ele não encontra em casa. Infelizmente às vezes pensa que se ir consumir uma droga, do princípio ele pensa que aquilo vai lhe aliviar, vai se sentir bem, mas depois quando começa a ser dependente, já é dependente, é difícil voltar.',
+    'P — Quais são os efeitos que o consumo de droga tem causado na saúde mental e física?',
+    'R — A droga tem vários efeitos. Tem efeitos psíquicos, efeitos cognitivos. A pessoa começa a ter surtos psicóticos por causa do efeito da droga e perde a memória porque as drogas destroem o sistema nervoso central.',
+    'E depois também quando tem o síndrome de abstinência... aqui no contexto penitenciário é difícil eles encontrarem a droga. Quando uma pessoa já é dependente químico, a dependência química é uma doença muito grave. Nós temos que entender que aquela pessoa que está a consumir droga está doente.',
+    'Às vezes cai no mundo de crime porque quer alimentar a necessidade de droga por causa da dependência, e quando chega aqui já não tem acesso à droga então tem crises de abstinência. Começam a ter delírios, começam a ter problemas sérios de saúde.',
+    'Nós aqui temos terapia de substituição, que é a metadona, que é um medicamento que actua parecido com a droga mas não é droga. Vai fazer com que ele, por último, vai abandonando, vai fazer limpeza e vai ficar livre das drogas.',
+    'P — Com que frequência tem recebido estes casos de abstinência aqui na penitenciária?',
+    'R — Sempre que vem um grupo da penitenciária provincial, eles mandam uma vez por mês ou duas vezes por mês, naquele grupo sempre tem uns três, quatro que têm histórico de dependência química.',
+    'Alguns vêm com crise de abstinência, outros vêm com danos graves. Existem casos que a droga provoca problemas do sistema cardiovascular e outros até pode levar até um AVC, Acidente Vascular Cerebral, ou falência de órgãos, porque são pessoas que já estão há muito tempo a consumir.',
+    'Como este problema cria ruptura familiar, quando uma família descobre que o filho é dependente, expulsa de casa ou ele mesmo sai, vai viver naquele ciclo de amigos que são consumidores, quando chega lá precisam de dinheiro para consumir e depois começam a cometer crimes para ter dinheiro. Estes já estão a começar a ter problema não só de abstinência, como também de falência orgânica.',
+    'Nós aqui temos um psicólogo clínico que faz acompanhamento de todos que têm histórico de dependência química.',
+    'P — Qual foi o caso que mais teve dificuldade em lidar?',
+    'R — Tivemos ultimamente, aqui na cidade de Nampula, esse consumo da famosa droga "Maca", então tivemos muitas situações muito difíceis de lidar. Tivemos um jovem até que já tinha problemas sérios cardiovascular e este foi internado no hospital. Felizmente ele tinha cometido um crime, estava com uma pena muito curta, ficou internado cerca de um mês porque já tinha um dano do coração. Foi feito tratamento e através da penitenciária, da assistência social, tivemos contacto com os familiares.',
+    'Este é um dos casos que nós tivemos de sucesso, porque conseguimos interagir com a família, a família aceitou. O psicólogo não trabalha só com o dependente, tem que também trabalhar com os pais porque nenhum pai quer ter um filho dependente químico. O tratamento não é só do doente, é também da família.',
+    'P — Que medidas devemos tomar como sociedade perante estes jovens que precisam de ajuda?',
+    'R — A medida primeiro nós temos que entender a ele como doente e todo o doente precisa de ajuda. A principal ajuda é da família. Não podemos abandonar uma pessoa só porque ele é dependente químico porque essa pessoa precisa de ser recuperada. É um jovem que tem muito para dar e tem que ser recuperado então nós temos que encaminhar a ele a unidades de saúde, tem um hospital especializado, o centro de saúde mental.',
+    'E também tem que ter muito apoio familiar, muito apoio dos amigos, porque às vezes essas pessoas começam por perder autoestima, já não cuidam de si, a aparência muda muito e às vezes nós costumamos já discriminá-los.',
+    'Então primeiro, não discriminar. Para ele estar naquele mundo é preciso ajudar, procurar ajuda para ele. Se tu não consegues ajudar, procurar muita gente, uma rede de apoio. Tem que ter uma rede de apoio para essas pessoas para poder se livrarem das drogas porque discriminar não é solução. Temos que recuperar essa pessoa, estamos a perder muitos jovens por causa de drogas, jovens que têm muito para dar mas infelizmente estão doentes.'
   ],
   author: {
-    name: 'Helena Mondlane',
-    role: 'Repórter de Direitos Humanos & Justiça',
-    avatar: 'HM',
-    affiliation: 'Delegação de Nampula'
+    name: 'Técnica de Saúde do ICAP & Redação',
+    role: 'Entrevista Exclusiva de Saúde & Reinserção',
+    avatar: 'ICAP',
+    affiliation: 'Penitenciária Regional de Nampula'
   },
-  dateline: 'Cadeia Regional de Nampula',
-  readTime: '7 min de leitura',
-  updatedAt: 'Hoje às 10:45 CAT',
+  dateline: 'Penitenciária Regional de Nampula',
+  readTime: '8 min de leitura',
+  updatedAt: 'Hoje às 11:35 CAT',
   imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-09_at_09.34.10_5b3c5914.jpeg',
-  imageCaption: 'Fig. 2 — Entrada oficial do Estabelecimento Penitenciário Regional de Nampula (Serviço Nacional Penitenciário): Equipa de reportagem e técnicos de saúde no arranque da investigação sobre reintegração social.',
-  audioDuration: '08:15 min',
-  tags: ['Nampula', 'Detentos', 'Arrependimento', 'Reabilitação', 'Justiça']
+  imageCaption: 'Fig. 1 — Entrada oficial do Estabelecimento Penitenciário Regional Norte, em Nampula: Unidade de saúde do ICAP presta acompanhamento clínico e apoio psicológico a reclusos com dependência química e síndrome de abstinência.',
+  audioDuration: '10:45 min',
+  tags: ['Consumo de Drogas', 'Nampula', 'Maka', 'Penitenciária Regional de Nampula', 'ICAP', 'Saúde Mental', 'Abstinência']
 };
 
 export const ARTICLE_UCM_VISITA_PENITENCIARIO: Article = {
@@ -282,6 +387,95 @@ export const ARTICLE_UCM_VISITA_PENITENCIARIO: Article = {
   imageCaption: 'Fig. 1 — Estudantes do 3.º ano de Relações Públicas e Marketing Estratégico da UCM (Faculdade de Educação e Comunicação) em visita ao Estabelecimento Penitenciário Regional Norte, em Nampula.',
   audioDuration: '04:50 min',
   tags: ['UCM', 'Nampula', 'Educação e Comunicação', 'Penitenciário', 'Relações Públicas', 'Marketing Estratégico']
+};
+
+export const ARTICLE_OPINIAO_NASSECO: Article = {
+  id: 'artigo-op-joao-nasseco-ia',
+  category: 'ARTIGO DE OPINIÃO · ENSINO SUPERIOR & IA',
+  categoryColor: '#0050cc',
+  isExclusive: true,
+  isAnalysis: true,
+  title: 'O Dilema de Tudo Elaborado: A Inteligência Artificial e o Vazio do Pensamento Universitário',
+  subtitle: 'DESAFIOS DOS DOCENTES E ESTUDANTES UNIVERSITÁRIOS: Por trás da promessa de optimização do tempo e democratização do conhecimento, esconde-se o risco de os estudantes terceirizarem a sua própria capacidade de pensar criticamente.',
+  leadParagraph: 'A presença da Inteligência Artificial, no ambiente académico, deixou de ser uma tendência de futuro para se tornar uma realidade incontornável. Ferramentas de geração de texto, código e imagem transformaram drasticamente a rotina de quem habita os campus universitários. Contudo, por trás da promessa de optimização do tempo e democratização do conhecimento, esconde-se um desafio muito mais profundo do que o simples combate ao plágio: o risco de os estudantes terceirizarem a sua própria capacidade de pensar criticamente, diga-se em abono da verdade, é deveras preocupante.',
+  fullContent: [
+    'A presença da Inteligência Artificial, no ambiente académico, deixou de ser uma tendência de futuro para se tornar uma realidade incontornável. Ferramentas de geração de texto, código e imagem transformaram drasticamente a rotina de quem habita os campus universitários. Contudo, por trás da promessa de optimização do tempo e democratização do conhecimento, esconde-se um desafio muito mais profundo do que o simples combate ao plágio: o risco de os estudantes terceirizarem a sua própria capacidade de pensar criticamente, diga-se em abono da verdade, é deveras preocupante.',
+    'O primeiro grande obstáculo reside na ilusão de produtividade. Ao delegar competências para redacção de ensaios, resolução de problemas complexos ou a síntese de artigos científicos à IA, o estudante abdica do processo mais valioso da formação superior: o desconforto do erro e o esforço cognitivo. A aprendizagem não acontece no resultado final entregue ao professor, mas sim, nas horas de leitura, no debate interno e na frustração de refazer um argumento sólido. Quando a máquina entrega a resposta pronta, o universitário corre o risco de se tornar um mero editor de textos alheios, ignorando o desenvolvimento da sua própria voz académica, porquanto ser uso inadequado, pois obriga-se-nos a repensar a razão existencial da Inteligência Artificial –FONTE DE INSPIRAÇÃO.',
+    'Além disso, a disparidade socioeconómica e o isolamento intelectual ganham novos contornos. Se, por um lado, a IA pode servir como um tutor personalizado para quem não tem acesso a outros recursos, por outro, ela pode aprofundar um fosso de competências. Aqueles que utilizam a tecnologia apenas como um "atalho" para cumprir prazos formam-se sem as habilidades de comunicação, síntese e investigação exigidas pelo mercado de trabalho contemporâneo — um mercado que, ironicamente, já automatiza as tarefas básicas que a IA faz, hoje.',
+    'Por fim, o desafio ético transcende as barreiras dos comités de integridade das universidades. Trata-se de uma questão de responsabilidade intelectual. Confiar cegamente em algoritmos que replicam preconceitos e geram alucinações (informações falsas) sem uma verificação rigorosa compromete a qualidade da ciência e do debate público que a universidade tem o dever de proteger.',
+    'Portanto, o caminho não passa pela proibição ingénua da tecnologia, mas sim pela redefinição do papel do estudante. As universidades precisam de migrar de um modelo de avaliação focado na memorização e na entrega mecânica para metodologias que exijam reflexão em tempo real, debate e aplicação prática. Diante da IA, o maior desafio do universitário moderno não é aprender a programar ou a usar comandos perfeitos, mas sim garantir que a sua mente continue a ser o território onde as perguntas mais difíceis — e verdadeiramente humanas — são formuladas.',
+    'Nampula, 02 de Novembro de 2026 – MOÇAMBIQUE'
+  ],
+  author: {
+    name: 'João Nasseco',
+    role: 'Autor de Opinião & Académico',
+    avatar: 'JN',
+    affiliation: 'Nampula, Moçambique'
+  },
+  dateline: 'Nampula / Moçambique',
+  readTime: '6 min de leitura',
+  updatedAt: '02 de Novembro de 2026',
+  audioDuration: '06:15 min',
+  tags: ['Inteligência Artificial', 'Universidade', 'Pensamento Crítico', 'Ensino Superior', 'Nampula', 'João Nasseco']
+};
+
+export const ARTICLE_OPINIAO_MARISSA: Article = {
+  id: 'artigo-op-marissa-alexandre-ensino',
+  category: 'ARTIGO DE OPINIÃO · QUALIDADE ACADÉMICA',
+  categoryColor: '#ba1a1a',
+  isExclusive: true,
+  isAnalysis: true,
+  title: 'Ensino Superior em Moçambique: Diplomas a Mais, Qualidade a Menos?',
+  subtitle: 'Estaremos realmente a formar quadros com qualidade ou estaremos, em alguns casos, demasiado preocupados em entregar diplomas? Uma reflexão sobre a expansão universitária e as exigências do país.',
+  leadParagraph: 'O ensino superior é frequentemente apresentado como uma das principais vias para o desenvolvimento de Moçambique. É nas universidades que se espera formar profissionais competentes, produzir conhecimento e preparar cidadãos capazes de responder aos desafios do país. No entanto, importa fazer uma pergunta incómoda: estaremos realmente a formar quadros com qualidade ou estaremos, em alguns casos, demasiado preocupados em entregar diplomas?',
+  fullContent: [
+    'O ensino superior é frequentemente apresentado como uma das principais vias para o desenvolvimento de Moçambique. É nas universidades que se espera formar profissionais competentes, produzir conhecimento e preparar cidadãos capazes de responder aos desafios do país. No entanto, importa fazer uma pergunta incómoda: estaremos realmente a formar quadros com qualidade ou estaremos, em alguns casos, demasiado preocupados em entregar diplomas?',
+    'Nos últimos anos, o acesso ao ensino superior tornou-se uma possibilidade para mais moçambicanos, graças à expansão das instituições e da oferta de cursos. Esta abertura é positiva e deve ser valorizada. Porém, aumentar o número de universidades e de estudantes não significa, automaticamente, melhorar a qualidade da formação. O crescimento do sector precisa de ser acompanhado por condições adequadas de ensino, docentes qualificados, bibliotecas actualizadas, laboratórios funcionais, investigação científica e mecanismos rigorosos de avaliação.',
+    'Em algumas instituições, os estudantes enfrentam salas de aulas sobrelotadas, falta de materiais de apoio, bibliografia desactualizada e dificuldades no acesso a laboratórios ou espaços de estudo. Há também situações em que a componente prática parece receber menos atenção do que a transmissão teórica dos conteúdos. Como consequência, chegam ao mercado de trabalho licenciados com diplomas nas mãos, mas com fragilidades evidentes nas competências técnicas, na comunicação e na resolução prática de problemas reais.',
+    'A proliferação de cursos sem a devida correspondência com as necessidades reais da economia nacional gera frustração tanto para as empresas empregadoras como para as famílias que investiram as suas poupanças na formação dos seus filhos. É imperativo que as autoridades do ensino superior e as próprias instituições universitárias façam uma reflexão profunda e corajosa: o prestígio académico não se mede pelo número de canudos entregues nas cerimónias de graduação, mas pela capacidade e integridade dos profissionais que colocamos ao serviço da Nação.',
+    'Nampula, Moçambique.'
+  ],
+  author: {
+    name: 'Marissa Alexandre',
+    role: 'Autora de Opinião & Analista Educacional',
+    avatar: 'MA',
+    affiliation: 'Nampula / Moçambique'
+  },
+  dateline: 'Nampula / Moçambique',
+  readTime: '5 min de leitura',
+  updatedAt: 'Novembro de 2026',
+  audioDuration: '05:40 min',
+  tags: ['Ensino Superior', 'Qualidade de Ensino', 'Moçambique', 'Diplomas', 'Marissa Alexandre', 'Educação']
+};
+
+export const ARTICLE_OPINIAO_NURA: Article = {
+  id: 'artigo-op-nura-felix-estagios',
+  category: 'ARTIGO DE OPINIÃO · UCM & MERCADO DE TRABALHO',
+  categoryColor: '#0050cc',
+  isExclusive: true,
+  isAnalysis: true,
+  title: 'Sem Estágios, Não Há Experiência: O Desafio da Universidade Católica de Moçambique na Preparação para o Mercado de Trabalho',
+  subtitle: 'A desconexão entre os bancos universitários e as exigências do mercado exige parcerias estratégicas urgentes entre a UCM e o tecido empresarial e institucional em Nampula.',
+  leadParagraph: 'Para a maioria dos estudantes universitários, a chegada ao final do curso é acompanhada por uma barreira quase intransponível: o anúncio de emprego que exige "experiência prévia comprovada de 2 a 3 anos" para funções de entrada. Como pode um jovem recém-licenciado ter experiência se as oportunidades de estágio curricular e profissional continuam a ser escassas e desarticuladas? Na Universidade Católica de Moçambique (UCM), particularmente na Faculdade de Educação e Comunicação em Nampula, esta questão assume uma urgência que não pode ser ignorada.',
+  fullContent: [
+    'Para a maioria dos estudantes universitários, a chegada ao final do curso é acompanhada por uma barreira quase intransponível: o anúncio de emprego que exige "experiência prévia comprovada de 2 a 3 anos" para funções de entrada. Como pode um jovem recém-licenciado ter experiência se as oportunidades de estágio curricular e profissional continuam a ser escassas e desarticuladas? Na Universidade Católica de Moçambique (UCM), particularmente na Faculdade de Educação e Comunicação em Nampula, esta questão assume uma urgência que não pode ser ignorada.',
+    'A teoria ensinada nas salas de aula é fundamental para moldar o pensamento analítico e os fundamentos éticos do futuro profissional. Contudo, na ausência de contacto direto com o ambiente real de trabalho — seja em redações, agências de comunicação, departamentos de recursos humanos, gabinetes de marketing institucional ou escolas —, o estudante conclui a licenciatura sem o domínio das rotinas práticas e da dinâmica interpessoal exigida pelas organizações modernas.',
+    'O desafio que se coloca à UCM e às demais instituições de ensino superior em Nampula é o de construir pontes sólidas e institucionais com o tecido empresarial, o sector público e a sociedade civil. Não basta esperar que o estudante, por iniciativa própria e muitas vezes sem redes de influência pessoal, procure uma vaga de estágio. É imperativo que a universidade celebre protocolos vinculativos de estágio obrigatório e remunerado com empresas do Corredor de Nacala, bancos, órgãos de comunicação social e delegações governamentais.',
+    'Iniciativas como a recente visita dos estudantes de Relações Públicas e Marketing Estratégico ao Estabelecimento Penitenciário Regional Norte demonstram como o contacto de campo oxigena a formação e desperta a consciência cívica e profissional dos formandos. Esse tipo de inserção prática deve deixar de ser uma exceção louvável para se converter numa metodologia estruturante do currículo académico.',
+    'Sem estágios estruturados, continuaremos a alimentar o ciclo perverso da exclusão juvenil do mercado de trabalho. Investir em programas de estágio é valorizar o talento dos jovens da província de Nampula e garantir que a Universidade Católica de Moçambique cumpra cabalmente a sua nobre missão de formar para a excelência e para o serviço da sociedade.',
+    'Nampula — Moçambique.'
+  ],
+  author: {
+    name: 'Nura Félix',
+    role: 'Autora de Opinião & Académica',
+    avatar: 'NF',
+    affiliation: 'UCM · Faculdade de Educação e Comunicação (Nampula)'
+  },
+  dateline: 'Nampula / Moçambique',
+  readTime: '5 min de leitura',
+  updatedAt: 'Novembro de 2026',
+  audioDuration: '05:30 min',
+  tags: ['UCM', 'Estágios', 'Mercado de Trabalho', 'Nampula', 'Nura Félix', 'Opinião', 'Educação e Comunicação']
 };
 
 export const OPINION_COLUMNISTS: Article[] = [
@@ -418,7 +612,8 @@ export const GENERAL_ARTICLES: Article[] = [
     imageUrl: '/assets/images/hospital_nampula_medicos_1794183537547.jpg',
     imageCaption: 'Equipa de investigação científica e médica em sessão de análise laboratorial e de dados de campo.',
     tags: ['Gorongosa', 'Biodiversidade', 'Ciência', 'Sofala']
-  }
+  },
+  ARTICLE_VENANCIO_MONDLANE
 ];
 
 // Rich dedicated articles for EACH specific navigation section
@@ -462,6 +657,7 @@ export const SECTION_CONTENTS: Record<string, SectionContent> = {
       tags: ['Assembleia da República', 'Descentralização', 'Municípios', 'Estado']
     },
     articles: [
+      ARTICLE_VENANCIO_MONDLANE,
       {
         id: 'pol-diplomacia-sadc',
         category: 'DIPLOMACIA & SEGURANÇA REGIONAL',
@@ -634,6 +830,17 @@ export const SECTION_CONTENTS: Record<string, SectionContent> = {
         updatedAt: 'Atualizado às 06:00',
         tags: ['Grelha', 'TV', 'Programas']
       }
+    ]
+  },
+  artigos: {
+    sectionId: 'artigos',
+    sectionTitle: 'Artigos & Ensaios de Opinião',
+    sectionSubtitle: 'Espaço de reflexão crítica, debate universitário e ensaios académicos sobre Inteligência Artificial, qualidade do ensino e inserção profissional da juventude.',
+    leadArticle: ARTICLE_OPINIAO_NASSECO,
+    articles: [
+      ARTICLE_OPINIAO_MARISSA,
+      ARTICLE_OPINIAO_NURA,
+      ARTICLE_UCM_VISITA_PENITENCIARIO
     ]
   },
   opiniao: {

@@ -194,8 +194,30 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
             )}
           </div>
 
-          {/* Featured Image if present */}
-          {article.imageUrl && (
+          {/* Featured Video if present */}
+          {article.videoUrl ? (
+            <div className="space-y-2">
+              <div className="relative aspect-video w-full bg-black border border-[#0D1B2A] overflow-hidden shadow-md">
+                <video
+                  src={article.videoUrl}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-contain bg-black"
+                >
+                  O seu navegador não suporta a reprodução de vídeo.
+                </video>
+                <div className="absolute top-2 left-2 bg-[#ba1a1a] text-white text-[9px] sm:text-[10px] uppercase font-bold px-2 py-0.5 tracking-wider pointer-events-none shadow-xs">
+                  VÍDEO DA REPORTAGEM · EXCLUSIVO
+                </div>
+              </div>
+              {article.imageCaption && (
+                <p className="text-xs font-serif italic text-[#74777d] border-l-2 border-[#ba1a1a] pl-2.5">
+                  {article.imageCaption}
+                </p>
+              )}
+            </div>
+          ) : article.imageUrl ? (
             <div className="space-y-2">
               <div className="max-h-[540px] aspect-[4/3] sm:aspect-[16/10] w-full bg-slate-900 border border-[#E5E7EB] overflow-hidden">
                 <img
@@ -211,11 +233,60 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                 </p>
               )}
             </div>
-          )}
+          ) : null}
 
           {/* Paragraphs */}
           <div className={`space-y-5 sm:space-y-6 ${fontSerif ? 'font-serif' : 'font-sans'} ${fontSizeClasses[fontSize]} text-[#111827]`}>
             {article.fullContent.map((paragraph, index) => {
+              const isQuestion = paragraph.startsWith('P —') || paragraph.startsWith('P -');
+              const isAnswer = paragraph.startsWith('R —') || paragraph.startsWith('R -');
+              const isSectionSubhead = paragraph.toLowerCase().includes('entrevista na íntegra');
+
+              if (isSectionSubhead) {
+                return (
+                  <div key={index} className="pt-4 pb-1 border-b border-[#0D1B2A]">
+                    <h4 className="font-serif font-bold text-lg uppercase tracking-wider text-[#0D1B2A]">
+                      {paragraph}
+                    </h4>
+                  </div>
+                );
+              }
+
+              if (isQuestion) {
+                return (
+                  <div key={index} className="pt-3">
+                    <p className="font-sans font-bold text-[15px] sm:text-base text-[#0D1B2A] bg-[#f1f3ff] p-3 border-l-4 border-[#0066FF] leading-snug">
+                      {paragraph}
+                    </p>
+                  </div>
+                );
+              }
+
+              if (paragraph.startsWith('Nota:') || paragraph.startsWith('Nota —')) {
+                return (
+                  <div key={index} className="my-4 p-3.5 bg-[#fff8f8] border-l-4 border-[#ba1a1a] text-xs sm:text-sm text-[#4b5563]">
+                    <strong className="text-[#ba1a1a] font-bold block mb-1 uppercase tracking-wider text-[11px]">Nota Jurídica:</strong>
+                    <p className="italic leading-relaxed">{paragraph.replace(/^Nota:\s*/, '')}</p>
+                  </div>
+                );
+              }
+
+              if (paragraph.startsWith('Fonte:')) {
+                return (
+                  <p key={index} className="text-xs font-sans text-[#74777d] pt-2 border-t border-[#E5E7EB]">
+                    <strong className="text-[#0D1B2A]">Fonte:</strong> {paragraph.replace(/^Fonte:\s*/, '')}
+                  </p>
+                );
+              }
+
+              if (isAnswer) {
+                return (
+                  <p key={index} className="leading-relaxed pl-1 text-[#141b2b]">
+                    {paragraph}
+                  </p>
+                );
+              }
+
               if (index === 0) {
                 return (
                   <p key={index} className="editorial-drop-cap">
@@ -224,8 +295,8 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                 );
               }
 
-              // Highlight quote on paragraph 2
-              if (index === 2) {
+              // Highlight quote on paragraph 2 only if not an interview
+              if (index === 2 && !article.fullContent.some(p => p.startsWith('P —') || p.startsWith('P -'))) {
                 return (
                   <div key={index} className="my-5 sm:my-6 pl-4 border-l-2 border-[#0066FF] py-2 bg-[#f1f3ff]/50">
                     <p className="italic font-serif text-base sm:text-lg text-[#0D1B2A]">

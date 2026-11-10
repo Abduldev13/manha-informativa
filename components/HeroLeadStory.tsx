@@ -1,7 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Article, PRIMARY_LEAD_STORY, SECONDARY_LEAD_STORY, ARTICLE_DROGAS_BELENENSES, ARTICLE_DETENTOS_ARREPENDIDOS, ARTICLE_UCM_VISITA_PENITENCIARIO } from '@/data/articles';
+import { 
+  Article, 
+  PRIMARY_LEAD_STORY, 
+  SECONDARY_LEAD_STORY, 
+  ARTICLE_VENANCIO_MONDLANE,
+  ARTICLE_VIDEO_REPORTAGEM_DROGAS,
+  ARTICLE_DROGAS_BELENENSES, 
+  ARTICLE_DETENTOS_ARREPENDIDOS, 
+  ARTICLE_UCM_VISITA_PENITENCIARIO 
+} from '@/data/articles';
 import { Volume2, VolumeX, Bookmark, Share2, ArrowRight, Play, Check } from 'lucide-react';
 
 interface HeroLeadStoryProps {
@@ -26,6 +35,106 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
   return (
     <article className="w-full flex flex-col space-y-5 sm:space-y-6">
       
+      {/* 0. GRANDE MANCHETE NACIONAL DE PRIMEIRA PÁGINA: JULGAMENTO DE VENÂNCIO MONDLANE */}
+      <section 
+        className="border-2 border-[#ba1a1a] bg-white p-3.5 sm:p-5 shadow-xs space-y-3.5 sm:space-y-4"
+        aria-label="Grande Manchete Nacional - Tribunal Supremo"
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#ba1a1a] pb-2">
+          <div className="flex items-center gap-2">
+            <span className="bg-[#ba1a1a] text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-widest px-2 py-0.5">
+              ÚLTIMA HORA · MANCHETE NACIONAL
+            </span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#0D1B2A]">
+              TRIBUNAL SUPREMO · MAPUTO
+            </span>
+          </div>
+          <span className="text-[10px] font-mono text-[#ba1a1a] font-bold uppercase tracking-wide">
+            Julgamento a 17 de Novembro
+          </span>
+        </div>
+
+        {/* Headline + Subtitle */}
+        <div 
+          onClick={() => onSelectArticle(ARTICLE_VENANCIO_MONDLANE)}
+          className="cursor-pointer group space-y-2"
+        >
+          <h1 className="font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#0D1B2A] group-hover:text-[#ba1a1a] transition-colors leading-[1.14] tracking-[-0.02em]">
+            {ARTICLE_VENANCIO_MONDLANE.title}
+          </h1>
+
+          <p className="font-serif italic text-sm sm:text-base text-[#374151] leading-relaxed">
+            {ARTICLE_VENANCIO_MONDLANE.subtitle}
+          </p>
+        </div>
+
+        {/* Hero Photographic Window with uploaded photo */}
+        <div 
+          onClick={() => onSelectArticle(ARTICLE_VENANCIO_MONDLANE)}
+          className="relative w-full overflow-hidden bg-slate-900 border border-[#E5E7EB] cursor-pointer group"
+        >
+          <div className="aspect-[16/10] sm:aspect-[16/9] w-full relative overflow-hidden">
+            <img
+              src={ARTICLE_VENANCIO_MONDLANE.imageUrl}
+              alt={ARTICLE_VENANCIO_MONDLANE.title}
+              className="w-full h-full object-cover object-[center_20%] group-hover:scale-[1.01] transition-transform duration-300"
+              referrerPolicy="no-referrer"
+            />
+            {/* Badges on image */}
+            <div className="absolute top-2.5 left-2.5 bg-[#0D1B2A]/90 text-white text-[9px] sm:text-[10px] uppercase font-bold tracking-widest px-2 py-1 border border-white/20">
+              Maputo · Processo Pós-Eleitoral 2024
+            </div>
+            <div className="absolute bottom-2.5 right-2.5 bg-[#ba1a1a]/95 text-white text-[10px] sm:text-[11px] font-mono font-bold px-2 py-1 border border-white/20">
+              17 NOV 2026 · TRIBUNAL SUPREMO
+            </div>
+          </div>
+          <p className="p-2.5 sm:p-3 text-[11px] sm:text-xs font-serif italic text-[#374151] bg-[#f9f9ff] border-t border-[#E5E7EB] leading-normal">
+            {ARTICLE_VENANCIO_MONDLANE.imageCaption}
+          </p>
+        </div>
+
+        {/* Editorial Highlights Box */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3 bg-[#fff8f8] border border-[#fecaca] text-xs">
+          <div className="space-y-1">
+            <span className="font-bold text-[#ba1a1a] uppercase text-[10px] block">As 5 Acusações do Ministério Público:</span>
+            <p className="text-[#1f2937] text-[11px] leading-relaxed">
+              Apologia pública ao crime, incitamento à desobediência colectiva, instigação pública à prática de crime, instigação ao terrorismo e incitamento ao terrorismo.
+            </p>
+          </div>
+          <div className="space-y-1 sm:border-l sm:border-[#fecaca] sm:pl-3">
+            <span className="font-bold text-[#0D1B2A] uppercase text-[10px] block">Decisão Sobre Transmissão:</span>
+            <p className="text-[#1f2937] text-[11px] leading-relaxed">
+              Tribunal Supremo recusou pedido da defesa para transmissão em direto na TV e digital; autorizou a presença do público e registo escrito pela imprensa.
+            </p>
+          </div>
+        </div>
+
+        {/* Lead Content & Legal Notice */}
+        <div className="space-y-2 text-xs sm:text-sm text-[#1f2937] leading-relaxed">
+          <p className="font-medium text-[#111827]">
+            {ARTICLE_VENANCIO_MONDLANE.leadParagraph}
+          </p>
+          <p className="text-[11px] sm:text-xs text-[#4b5563] italic bg-[#f9fafb] p-2.5 border-l-2 border-[#ba1a1a]">
+            <strong>Nota:</strong> As acusações constituem alegações do Ministério Público e deverão ser apreciadas pelo tribunal. Venâncio Mondlane beneficia da presunção de inocência até decisão judicial definitiva.
+          </p>
+        </div>
+
+        {/* Author Byline & CTA */}
+        <div className="flex flex-wrap items-center justify-between text-xs text-[#74777d] pt-2 border-t border-[#E5E7EB] gap-2">
+          <span>Por {ARTICLE_VENANCIO_MONDLANE.author.name} · {ARTICLE_VENANCIO_MONDLANE.dateline}</span>
+          <button
+            onClick={() => onSelectArticle(ARTICLE_VENANCIO_MONDLANE)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#ba1a1a] hover:bg-[#991b1b] text-white text-xs font-bold uppercase tracking-wider transition-colors min-h-[36px] cursor-pointer"
+          >
+            <span>Ler Notícia Completa</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </section>
+
+      {/* Broadsheet Section Break Line */}
+      <div className="w-full broadsheet-double-rule-light my-2" />
+
       {/* Kicker Category & Status */}
       <div className="flex items-center justify-between gap-2 border-b border-[#E5E7EB] pb-2">
         <div className="flex items-center gap-2">
@@ -199,7 +308,61 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
           </span>
         </div>
 
-        {/* Story 1: Consumo e Tráfico de Drogas no Bairro dos Belenenses */}
+        {/* Story Principal com Vídeo: Consumo de drogas entre jovens preocupa a sociedade em Nampula */}
+        <div className="space-y-3 pb-5 sm:pb-6 border-b-2 border-[#0D1B2A]">
+          {/* Vídeo fixado diretamente acima da notícia */}
+          <div className="relative aspect-video w-full bg-black border border-[#0D1B2A] overflow-hidden shadow-sm">
+            <video
+              src={ARTICLE_VIDEO_REPORTAGEM_DROGAS.videoUrl}
+              controls
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-contain bg-black"
+            >
+              O seu navegador não suporta a reprodução de vídeo.
+            </video>
+            <div className="absolute top-2 left-2 bg-[#ba1a1a] text-white text-[9px] sm:text-[10px] uppercase font-bold px-2 py-0.5 tracking-wider pointer-events-none shadow-xs">
+              VÍDEO DA REPORTAGEM · EXCLUSIVO
+            </div>
+            <div className="absolute top-2 right-2 bg-[#0D1B2A]/90 text-white text-[9px] font-mono px-1.5 py-0.5 border border-white/20">
+              01:43 MIN
+            </div>
+          </div>
+
+          <div 
+            onClick={() => onSelectArticle(ARTICLE_VIDEO_REPORTAGEM_DROGAS)}
+            className="cursor-pointer group space-y-2"
+          >
+            <div className="flex items-center gap-2 text-[10px] uppercase font-bold text-[#ba1a1a]">
+              <span>{ARTICLE_VIDEO_REPORTAGEM_DROGAS.category}</span>
+              <span className="text-[#c4c6cc]">·</span>
+              <span>EMISSÃO ESPECIAL</span>
+            </div>
+
+            <h3 className="font-serif text-xl xs:text-2xl sm:text-3xl font-bold text-[#0D1B2A] group-hover:text-[#0066FF] transition-colors leading-snug">
+              {ARTICLE_VIDEO_REPORTAGEM_DROGAS.title}
+            </h3>
+
+            <p className="font-serif italic text-xs xs:text-sm sm:text-base text-[#44474c] leading-relaxed">
+              {ARTICLE_VIDEO_REPORTAGEM_DROGAS.subtitle}
+            </p>
+
+            <div className="space-y-2 pt-1 font-sans text-xs sm:text-sm text-[#141b2b] leading-relaxed">
+              {ARTICLE_VIDEO_REPORTAGEM_DROGAS.fullContent.map((paragraph, idx) => (
+                <p key={idx}>{paragraph}</p>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between text-xs text-[#74777d] pt-2 gap-2 border-t border-[#E5E7EB]">
+              <span>Por {ARTICLE_VIDEO_REPORTAGEM_DROGAS.author.name} · {ARTICLE_VIDEO_REPORTAGEM_DROGAS.dateline}</span>
+              <span className="text-[#0066FF] font-bold group-hover:underline flex items-center gap-1 min-h-[32px]">
+                Abrir leitor de reportagem <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Story 2: Consumo e Tráfico de Drogas no Bairro dos Belenenses */}
         <div 
           onClick={() => onSelectArticle(ARTICLE_DROGAS_BELENENSES)}
           className="cursor-pointer group space-y-2.5 sm:space-y-3 pb-5 sm:pb-6 border-b border-[#E5E7EB]"
@@ -350,7 +513,7 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
           <div className="flex flex-wrap items-center justify-between text-xs text-[#74777d] pt-1 gap-2">
             <span>Por {ARTICLE_DETENTOS_ARREPENDIDOS.author.name} · {ARTICLE_DETENTOS_ARREPENDIDOS.dateline}</span>
             <span className="text-[#0066FF] font-bold group-hover:underline flex items-center gap-1 min-h-[32px]">
-              Ler testemunhos na íntegra <ArrowRight className="w-3.5 h-3.5" />
+              Ler entrevista na íntegra <ArrowRight className="w-3.5 h-3.5" />
             </span>
           </div>
         </div>

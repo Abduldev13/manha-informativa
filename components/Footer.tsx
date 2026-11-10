@@ -89,6 +89,7 @@ export default function Footer() {
               <li><a href="#politica" className="hover:text-[#0066FF] transition-colors">Política & Soberania</a></li>
               <li><a href="#economia" className="hover:text-[#0066FF] transition-colors">Economia & BVM</a></li>
               <li><a href="#justica" className="hover:text-[#0066FF] transition-colors">Justiça & Sociedade</a></li>
+              <li><a href="#artigos" className="hover:text-[#0066FF] transition-colors">Artigos & Ensaios</a></li>
               <li><a href="#investigacao" className="hover:text-[#0066FF] transition-colors">Investigação Especial</a></li>
               <li><a href="#cultura" className="hover:text-[#0066FF] transition-colors">Caderno de Cultura</a></li>
             </ul>

@@ -16,6 +16,7 @@ export const NAV_SECTIONS = [
   { id: 'politica', label: 'Política & Estado' },
   { id: 'economia', label: 'Economia & Mercados' },
   { id: 'sociedade', label: 'Sociedade & Justiça' },
+  { id: 'artigos', label: 'Artigos' },
   { id: 'aovivo', label: 'Moçambique Ao Vivo (TV)', isBroadcast: true },
   { id: 'opiniao', label: 'Opinião & Ensaios' },
   { id: 'africa', label: 'África & Mundo' },

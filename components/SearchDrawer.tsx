@@ -1,7 +1,21 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Article, PRIMARY_LEAD_STORY, SECONDARY_LEAD_STORY, OPINION_COLUMNISTS, GENERAL_ARTICLES, ARTICLE_DROGAS_BELENENSES, ARTICLE_DETENTOS_ARREPENDIDOS, ARTICLE_UCM_VISITA_PENITENCIARIO } from '@/data/articles';
+import { 
+  Article, 
+  PRIMARY_LEAD_STORY, 
+  SECONDARY_LEAD_STORY, 
+  OPINION_COLUMNISTS, 
+  GENERAL_ARTICLES, 
+  ARTICLE_VENANCIO_MONDLANE,
+  ARTICLE_DROGAS_BELENENSES, 
+  ARTICLE_DETENTOS_ARREPENDIDOS, 
+  ARTICLE_UCM_VISITA_PENITENCIARIO,
+  ARTICLE_VIDEO_REPORTAGEM_DROGAS,
+  ARTICLE_OPINIAO_NASSECO,
+  ARTICLE_OPINIAO_MARISSA,
+  ARTICLE_OPINIAO_NURA
+} from '@/data/articles';
 import { Search, X, ArrowRight, Clock, Tag } from 'lucide-react';
 
 interface SearchDrawerProps {
@@ -15,10 +29,15 @@ export default function SearchDrawer({ isOpen, onClose, onSelectArticle }: Searc
 
   const allArticles: Article[] = useMemo(() => {
     return [
+      ARTICLE_VENANCIO_MONDLANE,
       PRIMARY_LEAD_STORY,
+      ARTICLE_VIDEO_REPORTAGEM_DROGAS,
       ARTICLE_DROGAS_BELENENSES,
       ARTICLE_UCM_VISITA_PENITENCIARIO,
       ARTICLE_DETENTOS_ARREPENDIDOS,
+      ARTICLE_OPINIAO_NASSECO,
+      ARTICLE_OPINIAO_MARISSA,
+      ARTICLE_OPINIAO_NURA,
       SECONDARY_LEAD_STORY,
       ...OPINION_COLUMNISTS,
       ...GENERAL_ARTICLES
@@ -66,7 +85,7 @@ export default function SearchDrawer({ isOpen, onClose, onSelectArticle }: Searc
         {/* Quick Suggestion Pills */}
         <div className="px-4 py-2 bg-[#f1f3ff] border-b border-[#E5E7EB] flex items-center gap-2 overflow-x-auto text-xs text-[#44474c]">
           <span className="font-bold text-[10px] uppercase text-[#74777d]">Tópicos Rápidos:</span>
-          {['Estudantes da UCM', 'Penitenciário Regional Norte', 'Bairro dos Belenenses', 'Detentos Arrependidos', 'Nampula Drogas', 'Corredor de Nacala'].map((quick) => (
+          {['Venâncio Mondlane', 'Tribunal Supremo', 'Vídeo Reportagem Nampula', 'Artigos de Opinião', 'João Nasseco', 'Inteligência Artificial', 'Marissa Alexandre', 'Sem Estágios (UCM)', 'Estudantes da UCM', 'Penitenciário Regional Norte', 'Bairro dos Belenenses'].map((quick) => (
             <button
               key={quick}
               onClick={() => setQuery(quick)}

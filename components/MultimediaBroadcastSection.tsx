@@ -13,19 +13,21 @@ interface MediaItem {
   description: string;
   thumbnail: string;
   viewsOrListens: string;
+  videoSrc?: string;
 }
 
 const BROADCAST_ITEMS: MediaItem[] = [
   {
-    id: 'vid-1',
+    id: 'vid-nampula-drogas-campo',
     type: 'video',
-    title: 'Documentário Exclusivo: O Renascimento do Porto da Beira e a Ligação ao Zimbabué',
-    duration: '24:18 min',
-    show: 'Emissão Especial',
-    presenter: 'Equipa de Reportagem de Sofala',
-    description: 'Investigação no terreno sobre o novo cais de granéis agrícolas e a dragagem contínua do canal de acesso após a época ciclónica.',
-    thumbnail: '/assets/images/porto_beira_logistica_1794183565074.jpg',
-    viewsOrListens: '18.4K visualizações'
+    title: 'Reportagem Especial: Consumo de drogas entre jovens preocupa a sociedade em Nampula',
+    duration: '01:43 min',
+    show: 'Emissão Especial Nampula',
+    presenter: 'Equipa de Reportagem de Campo',
+    description: 'A problemática do consumo de substâncias psicoativas entre os jovens levanta preocupações sobre o futuro da juventude e a necessidade de maior consciencialização nas comunidades.',
+    thumbnail: '/assets/aistudio/WhatsApp_Image_2026-11-09_at_09.39.40_624df156.jpeg',
+    videoSrc: '/assets/aistudio/whatsapp-video-2026-11-09-at-172750_AGxcINv2_659203cc.mp4',
+    viewsOrListens: '16.8K visualizações'
   },
   {
     id: 'pod-1',
@@ -99,25 +101,39 @@ export default function MultimediaBroadcastSection() {
           {/* Big Featured Video Frame (8 cols) */}
           <div className="lg:col-span-8 bg-slate-950 border border-white/10 p-2 sm:p-4">
             <div className="relative aspect-video w-full bg-slate-900 overflow-hidden">
-              <img
-                src={activeMedia.thumbnail}
-                alt={activeMedia.title}
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+              {activeMedia.videoSrc && isPlaying ? (
+                <video
+                  src={activeMedia.videoSrc}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-contain bg-black"
+                >
+                  O seu navegador não suporta a reprodução de vídeo.
+                </video>
+              ) : (
+                <>
+                  <img
+                    src={activeMedia.thumbnail}
+                    alt={activeMedia.title}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
-              {/* Central Play/Pause Trigger */}
-              <button
-                onClick={() => setIsPlaying(!isPlaying)}
-                className="absolute inset-0 m-auto w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#0066FF] hover:bg-[#00D2FF] hover:text-[#0D1B2A] transition-colors flex items-center justify-center text-white cursor-pointer shadow-xl min-h-[48px] min-w-[48px]"
-                aria-label={isPlaying ? "Pausar vídeo" : "Reproduzir vídeo"}
-              >
-                {isPlaying ? <Pause className="w-6 h-6 sm:w-7 sm:h-7" /> : <Play className="w-6 h-6 sm:w-7 sm:h-7 ml-1 fill-current" />}
-              </button>
+                  {/* Central Play/Pause Trigger */}
+                  <button
+                    onClick={() => setIsPlaying(true)}
+                    className="absolute inset-0 m-auto w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#0066FF] hover:bg-[#00D2FF] hover:text-[#0D1B2A] transition-colors flex items-center justify-center text-white cursor-pointer shadow-xl min-h-[48px] min-w-[48px]"
+                    aria-label="Reproduzir vídeo"
+                  >
+                    <Play className="w-6 h-6 sm:w-7 sm:h-7 ml-1 fill-current" />
+                  </button>
+                </>
+              )}
 
               {/* Overlay Indicators */}
-              <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex items-center gap-2">
+              <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex items-center gap-2 pointer-events-none">
                 <span className="bg-[#0D1B2A]/90 text-white text-[9px] sm:text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 sm:py-1 border border-white/20">
                   {activeMedia.show}
                 </span>
@@ -128,9 +144,11 @@ export default function MultimediaBroadcastSection() {
                 )}
               </div>
 
-              <div className="absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-3 bg-black/80 text-white text-[10px] sm:text-xs font-mono px-2 py-0.5 sm:py-1">
-                {activeMedia.duration}
-              </div>
+              {!isPlaying && (
+                <div className="absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-3 bg-black/80 text-white text-[10px] sm:text-xs font-mono px-2 py-0.5 sm:py-1">
+                  {activeMedia.duration}
+                </div>
+              )}
             </div>
 
             {/* Video metadata description */}

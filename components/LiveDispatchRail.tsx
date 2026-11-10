@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { BREAKING_DISPATCHES, DispatchItem } from '@/data/articles';
-import { Radio, Tv, Volume2, VolumeX, Maximize2, Compass, Waves, Clock } from 'lucide-react';
+import { Radio, Tv, Volume2, VolumeX, Maximize2, Compass, Waves, Clock, Phone, HeartPulse, Shield } from 'lucide-react';
 
 interface LiveDispatchRailProps {
   onSelectDispatch: (dispatch: DispatchItem) => void;
@@ -190,6 +190,47 @@ export default function LiveDispatchRail({
           <Compass className="w-3 h-3 text-[#74777d] shrink-0" />
           <span className="truncate">Instituto Nacional de Meteorologia</span>
         </div>
+      </div>
+
+      {/* 4. Linhas de Apoio & Serviços de Emergência Nampula */}
+      <div className="bg-white border-2 border-[#0D1B2A] p-3 text-xs flex flex-col space-y-2">
+        <div className="border-b border-[#0D1B2A] pb-1 flex items-center justify-between">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-[#ba1a1a] flex items-center gap-1">
+            <HeartPulse className="w-3.5 h-3.5" />
+            <span>Linhas de Apoio</span>
+          </span>
+          <span className="text-[9px] text-[#74777d] uppercase font-mono">NAMPULA</span>
+        </div>
+
+        <div className="space-y-2 text-[11px] text-[#141b2b]">
+          <div className="p-1.5 bg-[#f1f3ff] border border-[#E5E7EB]">
+            <span className="font-bold block text-[#0D1B2A] text-[10px] uppercase">Apoio à Família e Jovens:</span>
+            <div className="flex items-center justify-between font-mono text-[#0066FF] font-bold text-xs mt-0.5">
+              <span>Linha Fala Criança</span>
+              <span>116</span>
+            </div>
+          </div>
+
+          <div className="p-1.5 bg-[#f1f3ff] border border-[#E5E7EB]">
+            <span className="font-bold block text-[#0D1B2A] text-[10px] uppercase">Saúde Mental & Dependência:</span>
+            <div className="flex items-center justify-between font-mono text-[#0066FF] font-bold text-xs mt-0.5">
+              <span>ICAP / Hosp. Geral</span>
+              <span>800 112 233</span>
+            </div>
+          </div>
+
+          <div className="p-1.5 bg-[#f1f3ff] border border-[#E5E7EB]">
+            <span className="font-bold block text-[#0D1B2A] text-[10px] uppercase">Piquete SERNIC Nampula:</span>
+            <div className="flex items-center justify-between font-mono text-[#0066FF] font-bold text-xs mt-0.5">
+              <span>Denúncias & Apoio</span>
+              <span>84 312 9000</span>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-[9px] text-[#74777d] text-center pt-1 border-t border-[#E5E7EB]">
+          Chamadas gratuitas e confidenciais.
+        </p>
       </div>
 
     </div>
