@@ -240,12 +240,16 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
             {article.fullContent.map((paragraph, index) => {
               const isQuestion = paragraph.startsWith('P —') || paragraph.startsWith('P -');
               const isAnswer = paragraph.startsWith('R —') || paragraph.startsWith('R -');
-              const isSectionSubhead = paragraph.toLowerCase().includes('entrevista na íntegra');
+              const isSectionSubhead = 
+                paragraph.toLowerCase().includes('entrevista na íntegra') ||
+                paragraph.startsWith('Vitória sobre o Hull City') ||
+                paragraph.startsWith('Manchester City perde terreno') ||
+                paragraph.startsWith('Brighton também entra na disputa');
 
               if (isSectionSubhead) {
                 return (
                   <div key={index} className="pt-4 pb-1 border-b border-[#0D1B2A]">
-                    <h4 className="font-serif font-bold text-lg uppercase tracking-wider text-[#0D1B2A]">
+                    <h4 className="font-serif font-bold text-base sm:text-lg uppercase tracking-wide text-[#0D1B2A]">
                       {paragraph}
                     </h4>
                   </div>

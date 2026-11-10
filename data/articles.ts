@@ -82,6 +82,14 @@ export const BREAKING_DISPATCHES: DispatchItem[] = [
     urgency: 'high'
   },
   {
+    id: 'disp-arsenal-premier-league',
+    time: '14:30',
+    category: 'FUTEBOL · PREMIER LEAGUE',
+    title: 'Arsenal reforça liderança da Premier League com 27 pontos e amplia vantagem sobre Manchester City',
+    summary: 'Vitória por 1-0 sobre o Hull City com golo de Ødegaard isola os Gunners no topo; City sofre terceira derrota consecutiva.',
+    urgency: 'high'
+  },
+  {
     id: 'disp-video-drogas',
     time: '11:42',
     category: 'VÍDEO · NAMPULA',
@@ -244,6 +252,50 @@ export const ARTICLE_VENANCIO_MONDLANE: Article = {
   imageCaption: 'Venâncio Mondlane acompanhado por escolta da Polícia da República de Moçambique e advogados em Maputo durante deslocação judicial.',
   audioDuration: '05:40 min',
   tags: ['Política', 'Justiça', 'Moçambique', 'Venâncio Mondlane', 'Tribunal Supremo', 'Eleições 2024', 'Maputo']
+};
+
+export const ARTICLE_ARSENAL_PREMIER_LEAGUE: Article = {
+  id: 'arsenal-reforca-lideranca-premier-league',
+  category: 'DESPORTO INTERNACIONAL · PREMIER LEAGUE',
+  categoryColor: '#ba1a1a',
+  isExclusive: false,
+  isUrgent: false,
+  title: 'Arsenal reforça liderança da Premier League e aumenta pressão sobre Manchester City e Brighton',
+  subtitle: 'Os Gunners chegam aos 27 pontos em dez jornadas, consolidam a primeira posição do campeonato inglês e aproveitam o momento difícil do Manchester City para ampliar a vantagem na corrida pelo título.',
+  leadParagraph: 'O Arsenal está a protagonizar um início de temporada bastante positivo na Premier League 2026/27. Depois de dez jornadas disputadas, a equipa londrina ocupa a primeira posição da classificação, com 27 pontos, resultado de nove vitórias e apenas uma derrota.',
+  fullContent: [
+    'O Arsenal está a protagonizar um início de temporada bastante positivo na Premier League 2026/27. Depois de dez jornadas disputadas, a equipa londrina ocupa a primeira posição da classificação, com 27 pontos, resultado de nove vitórias e apenas uma derrota.',
+    'A campanha coloca os Gunners numa posição privilegiada na luta pelo título inglês, numa temporada em que vários clubes tradicionais procuram afirmar-se como candidatos à conquista do campeonato.',
+    'A equipa orientada por Mikel Arteta tem demonstrado regularidade nos resultados e capacidade para conquistar pontos mesmo em partidas equilibradas. Um dos exemplos mais recentes foi a vitória por 1-0 diante do Hull City, no dia 7 de Novembro, resultado que permitiu ao Arsenal somar mais três pontos e manter a liderança.',
+    'Vitória sobre o Hull City reforça confiança dos londrinos',
+    'No encontro da décima jornada, disputado no dia 7 de Novembro, o Arsenal venceu o Hull City por 1-0, numa partida marcada pela resistência defensiva da equipa adversária.',
+    'O momento decisivo surgiu aos 72 minutos, quando o médio norueguês Martin Ødegaard aproveitou uma recarga após uma defesa do guarda-redes adversário para marcar o único golo da partida.',
+    'Apesar das dificuldades encontradas durante o encontro, o Arsenal conseguiu controlar o resultado e assegurar uma vitória importante na corrida pelo campeonato.',
+    'Este triunfo representou também a quarta vitória consecutiva da equipa na Premier League, reforçando a confiança do grupo para os próximos compromissos.',
+    'Manchester City perde terreno na corrida pelo título',
+    'Enquanto o Arsenal continua a somar resultados positivos, o Manchester City atravessa um momento complicado na competição.',
+    'A formação orientada por Pep Guardiola sofreu uma derrota por 3-1 diante do Nottingham Forest, no dia 7 de Novembro. O resultado representou a terceira derrota consecutiva do City no campeonato.',
+    'A derrota deixou os Citizens com 21 pontos, seis atrás do Arsenal, aumentando a pressão sobre a equipa na luta pela recuperação da liderança.',
+    'O Nottingham Forest surpreendeu com uma exibição ofensiva eficaz. Jair Cunha e Liam Delap marcaram na primeira parte, enquanto Rayan Cherki reduziu para o Manchester City. Delap voltou a marcar na segunda parte e confirmou o triunfo da equipa da casa.',
+    'A sequência negativa do Manchester City representa uma oportunidade importante para o Arsenal ampliar a sua vantagem na classificação.',
+    'Brighton também entra na disputa',
+    'Outro destaque desta temporada é o Brighton, que ocupa a segunda posição com 22 pontos, cinco atrás do Arsenal.',
+    'A equipa tem apresentado números ofensivos expressivos e venceu o Brentford por 2-0 na décima jornada, demonstrando que não pretende abandonar a luta pelas primeiras posições.',
+    'O Liverpool, com 18 pontos, também permanece entre os primeiros classificados, enquanto o Chelsea soma 16 pontos e procura recuperar terreno.'
+  ],
+  author: {
+    name: 'Redação de Desporto Internacional',
+    role: 'Correspondente de Futebol Europeu',
+    avatar: 'DI',
+    affiliation: 'Manhã Informativo · Caderno de Desporto'
+  },
+  dateline: 'Londres / Maputo',
+  readTime: '4 min de leitura',
+  updatedAt: 'Hoje às 14:30 CAT',
+  imageUrl: '/assets/aistudio/arsenal_ff8dbb7e.jpg',
+  imageCaption: 'Jogadores do Arsenal comemoram mais um resultado positivo na Premier League; Gunners lideram isolados com 27 pontos após 10 jornadas.',
+  audioDuration: '05:10 min',
+  tags: ['Arsenal', 'Premier League', 'Manchester City', 'Brighton', 'Futebol Inglês', 'Mikel Arteta', 'Desporto']
 };
 
 export const ARTICLE_VIDEO_REPORTAGEM_DROGAS: Article = {
@@ -613,7 +665,8 @@ export const GENERAL_ARTICLES: Article[] = [
     imageCaption: 'Equipa de investigação científica e médica em sessão de análise laboratorial e de dados de campo.',
     tags: ['Gorongosa', 'Biodiversidade', 'Ciência', 'Sofala']
   },
-  ARTICLE_VENANCIO_MONDLANE
+  ARTICLE_VENANCIO_MONDLANE,
+  ARTICLE_ARSENAL_PREMIER_LEAGUE
 ];
 
 // Rich dedicated articles for EACH specific navigation section

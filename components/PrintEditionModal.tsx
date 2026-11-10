@@ -164,6 +164,20 @@ export default function PrintEditionModal({ isOpen, onClose }: PrintEditionModal
                 </p>
               </div>
 
+              {/* Front Page Sports Box */}
+              <div className="bg-[#f1f3ff] border border-[#0D1B2A] p-2.5 text-left">
+                <div className="flex items-center justify-between text-[10px] uppercase font-bold text-[#0D1B2A] pb-1 border-b border-[#d1d5db]">
+                  <span>CADERNO DE DESPORTO · PREMIER LEAGUE</span>
+                  <span className="font-mono text-[#ba1a1a]">1.º LUGAR · 27 PTS</span>
+                </div>
+                <h4 className="font-serif font-bold text-sm sm:text-base text-[#0D1B2A] mt-1 leading-snug">
+                  Arsenal reforça liderança da Premier League e aumenta pressão sobre City e Brighton
+                </h4>
+                <p className="font-sans text-[11px] text-[#44474c] mt-0.5">
+                  Golo de Ødegaard aos 72&apos; dá triunfo sobre o Hull City; Man City perde 3-1 ante o Forest e fica a 6 pontos.
+                </p>
+              </div>
+
               {/* Front Page Headline */}
               <div className="border-y-2 border-[#0D1B2A] py-3 sm:py-4 text-center">
                 <span className="text-[11px] sm:text-xs uppercase font-bold text-[#0066FF] tracking-widest block mb-1">

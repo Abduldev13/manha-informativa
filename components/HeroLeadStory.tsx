@@ -6,6 +6,7 @@ import {
   PRIMARY_LEAD_STORY, 
   SECONDARY_LEAD_STORY, 
   ARTICLE_VENANCIO_MONDLANE,
+  ARTICLE_ARSENAL_PREMIER_LEAGUE,
   ARTICLE_VIDEO_REPORTAGEM_DROGAS,
   ARTICLE_DROGAS_BELENENSES, 
   ARTICLE_DETENTOS_ARREPENDIDOS, 
@@ -127,6 +128,142 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
             className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#ba1a1a] hover:bg-[#991b1b] text-white text-xs font-bold uppercase tracking-wider transition-colors min-h-[36px] cursor-pointer"
           >
             <span>Ler Notícia Completa</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </section>
+
+      {/* Broadsheet Section Break Line */}
+      <div className="w-full broadsheet-double-rule-light my-2" />
+
+      {/* 0.1 DESTAQUE DESPORTO INTERNACIONAL: ARSENAL REFORÇA LIDERANÇA DA PREMIER LEAGUE */}
+      <section 
+        className="border-2 border-[#0D1B2A] bg-white p-3.5 sm:p-5 shadow-xs space-y-3.5 sm:space-y-4"
+        aria-label="Desporto Internacional - Premier League"
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#0D1B2A] pb-2">
+          <div className="flex items-center gap-2">
+            <span className="bg-[#ba1a1a] text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-widest px-2 py-0.5">
+              CADERNO DE DESPORTO
+            </span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#0D1B2A]">
+              PREMIER LEAGUE 2026/27 · 10.ª JORNADA
+            </span>
+          </div>
+          <span className="text-[10px] font-mono font-bold text-[#ba1a1a] uppercase tracking-wide">
+            Arsenal 27 Pts · 1.º Lugar
+          </span>
+        </div>
+
+        {/* Headline + Subtitle */}
+        <div 
+          onClick={() => onSelectArticle(ARTICLE_ARSENAL_PREMIER_LEAGUE)}
+          className="cursor-pointer group space-y-2"
+        >
+          <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl font-bold text-[#0D1B2A] group-hover:text-[#ba1a1a] transition-colors leading-[1.14] tracking-[-0.02em]">
+            {ARTICLE_ARSENAL_PREMIER_LEAGUE.title}
+          </h2>
+
+          <p className="font-serif italic text-sm sm:text-base text-[#374151] leading-relaxed">
+            {ARTICLE_ARSENAL_PREMIER_LEAGUE.subtitle}
+          </p>
+        </div>
+
+        {/* Hero Photographic Window with uploaded Arsenal photo */}
+        <div 
+          onClick={() => onSelectArticle(ARTICLE_ARSENAL_PREMIER_LEAGUE)}
+          className="relative w-full overflow-hidden bg-slate-900 border border-[#E5E7EB] cursor-pointer group"
+        >
+          <div className="aspect-[16/10] sm:aspect-[16/9] w-full relative overflow-hidden">
+            <img
+              src={ARTICLE_ARSENAL_PREMIER_LEAGUE.imageUrl}
+              alt={ARTICLE_ARSENAL_PREMIER_LEAGUE.title}
+              className="w-full h-full object-cover object-[center_20%] group-hover:scale-[1.01] transition-transform duration-300"
+              referrerPolicy="no-referrer"
+            />
+            {/* Badges on image */}
+            <div className="absolute top-2.5 left-2.5 bg-[#ba1a1a] text-white text-[9px] sm:text-[10px] uppercase font-bold tracking-widest px-2 py-1 border border-white/20">
+              Gunners no Topo
+            </div>
+            <div className="absolute bottom-2.5 right-2.5 bg-[#0D1B2A]/95 text-white text-[10px] sm:text-[11px] font-mono font-bold px-2 py-1 border border-white/20">
+              9 VITÓRIAS EM 10 JOGOS
+            </div>
+          </div>
+          <p className="p-2.5 sm:p-3 text-[11px] sm:text-xs font-serif italic text-[#374151] bg-[#f9f9ff] border-t border-[#E5E7EB] leading-normal">
+            {ARTICLE_ARSENAL_PREMIER_LEAGUE.imageCaption}
+          </p>
+        </div>
+
+        {/* Premier League Top-5 Classification Standings Bar */}
+        <div className="p-3 bg-[#f1f3ff] border border-[#d1d5db]">
+          <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#0D1B2A] pb-1.5 border-b border-[#d1d5db] mb-2">
+            <span>Classificação da Premier League (10.ª Jornada)</span>
+            <span className="text-[#ba1a1a] font-mono">Diferença de +5 pts</span>
+          </div>
+          <div className="grid grid-cols-2 xs:grid-cols-5 gap-2 text-center text-xs">
+            <div className="bg-[#ba1a1a] text-white p-1.5 font-bold shadow-xs">
+              <span className="block text-[9px] uppercase tracking-wider opacity-90">1.º Arsenal</span>
+              <span className="font-mono text-sm sm:text-base">27 pts</span>
+              <span className="block text-[8px] opacity-75">9V 0E 1D</span>
+            </div>
+            <div className="bg-white border border-[#E5E7EB] p-1.5 font-semibold text-[#0D1B2A]">
+              <span className="block text-[9px] uppercase tracking-wider text-[#74777d]">2.º Brighton</span>
+              <span className="font-mono text-sm sm:text-base text-[#0066FF]">22 pts</span>
+              <span className="block text-[8px] text-[#74777d]">7V 1E 2D</span>
+            </div>
+            <div className="bg-white border border-[#E5E7EB] p-1.5 font-semibold text-[#0D1B2A]">
+              <span className="block text-[9px] uppercase tracking-wider text-[#74777d]">3.º Man City</span>
+              <span className="font-mono text-sm sm:text-base text-[#44474c]">21 pts</span>
+              <span className="block text-[8px] text-[#ba1a1a]">3 derrotas seguidas</span>
+            </div>
+            <div className="bg-white border border-[#E5E7EB] p-1.5 font-semibold text-[#0D1B2A]">
+              <span className="block text-[9px] uppercase tracking-wider text-[#74777d]">4.º Liverpool</span>
+              <span className="font-mono text-sm sm:text-base text-[#44474c]">18 pts</span>
+              <span className="block text-[8px] text-[#74777d]">Na luta europeia</span>
+            </div>
+            <div className="col-span-2 xs:col-span-1 bg-white border border-[#E5E7EB] p-1.5 font-semibold text-[#0D1B2A]">
+              <span className="block text-[9px] uppercase tracking-wider text-[#74777d]">5.º Chelsea</span>
+              <span className="font-mono text-sm sm:text-base text-[#44474c]">16 pts</span>
+              <span className="block text-[8px] text-[#74777d]">A recuperar</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 3 Key Editorial Bullet Highlights */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 p-3 bg-white border border-[#E5E7EB] text-xs">
+          <div className="space-y-1">
+            <span className="font-bold text-[#ba1a1a] uppercase text-[10px] block">1-0 vs Hull City:</span>
+            <p className="text-[#1f2937] text-[11px] leading-relaxed">
+              Martin Ødegaard resolveu aos 72 minutos na recarga, somando a 4.ª vitória consecutiva dos comandados de Mikel Arteta.
+            </p>
+          </div>
+          <div className="space-y-1 sm:border-l sm:border-[#E5E7EB] sm:pl-3">
+            <span className="font-bold text-[#0D1B2A] uppercase text-[10px] block">Crise no Man City:</span>
+            <p className="text-[#1f2937] text-[11px] leading-relaxed">
+              Derrota por 3-1 ante o Nottingham Forest; 3.º desaire consecutivo da equipa de Pep Guardiola, ficando a 6 pontos do Arsenal.
+            </p>
+          </div>
+          <div className="space-y-1 sm:border-l sm:border-[#E5E7EB] sm:pl-3">
+            <span className="font-bold text-[#0066FF] uppercase text-[10px] block">Brighton na Perseguição:</span>
+            <p className="text-[#1f2937] text-[11px] leading-relaxed">
+              Vitória por 2-0 frente ao Brentford consolida o Brighton no 2.º posto com 22 pontos e forte caudal ofensivo.
+            </p>
+          </div>
+        </div>
+
+        {/* Lead Excerpt */}
+        <p className="font-sans text-xs sm:text-sm text-[#1f2937] leading-relaxed">
+          {ARTICLE_ARSENAL_PREMIER_LEAGUE.leadParagraph}
+        </p>
+
+        {/* Author Byline & CTA */}
+        <div className="flex flex-wrap items-center justify-between text-xs text-[#74777d] pt-2 border-t border-[#E5E7EB] gap-2">
+          <span>Por {ARTICLE_ARSENAL_PREMIER_LEAGUE.author.name} · {ARTICLE_ARSENAL_PREMIER_LEAGUE.dateline}</span>
+          <button
+            onClick={() => onSelectArticle(ARTICLE_ARSENAL_PREMIER_LEAGUE)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0D1B2A] hover:bg-[#ba1a1a] text-white text-xs font-bold uppercase tracking-wider transition-colors min-h-[36px] cursor-pointer"
+          >
+            <span>Ler Crónica Desportiva Completa</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
