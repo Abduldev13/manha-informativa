@@ -178,6 +178,20 @@ export default function PrintEditionModal({ isOpen, onClose }: PrintEditionModal
                 </p>
               </div>
 
+              {/* Front Page Obituary Box: UCM */}
+              <div className="bg-white border-2 border-[#0D1B2A] p-2.5 text-left">
+                <div className="flex items-center justify-between text-[10px] uppercase font-bold text-[#0D1B2A] pb-1 border-b border-[#0D1B2A]">
+                  <span>† NOTA DE FALECIMENTO · UCM NAMPULA</span>
+                  <span className="font-mono text-[#ba1a1a]">1957–2026</span>
+                </div>
+                <h4 className="font-serif font-bold text-sm text-[#0D1B2A] mt-1 leading-snug">
+                  UCM anuncia morte do docente Tarcísio Abibo, da Faculdade de Educação e Comunicação
+                </h4>
+                <p className="font-sans text-[11px] text-[#44474c] mt-0.5">
+                  A instituição manifesta profunda consternação pelo desaparecimento do académico de Nampula.
+                </p>
+              </div>
+
               {/* Front Page Headline */}
               <div className="border-y-2 border-[#0D1B2A] py-3 sm:py-4 text-center">
                 <span className="text-[11px] sm:text-xs uppercase font-bold text-[#0066FF] tracking-widest block mb-1">

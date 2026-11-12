@@ -22,6 +22,7 @@ export interface Article {
   imageCaption?: string;
   videoUrl?: string;
   videoDuration?: string;
+  videoPoster?: string;
   audioDuration?: string;
   tags: string[];
 }
@@ -90,11 +91,19 @@ export const BREAKING_DISPATCHES: DispatchItem[] = [
     urgency: 'high'
   },
   {
-    id: 'disp-video-drogas',
+    id: 'disp-ucm-tarcisio-abibo',
+    time: '15:10',
+    category: 'LUTO · UCM NAMPULA',
+    title: 'UCM anuncia com profunda consternação o falecimento do docente Tarcísio Abibo da FEC',
+    summary: 'Mestre Tarcísio Abibo (1957–2026), docente da Faculdade de Educação e Comunicação em Nampula, faleceu vítima de doença.',
+    urgency: 'high'
+  },
+  {
+    id: 'disp-muatala-grupo-15',
     time: '11:42',
-    category: 'VÍDEO · NAMPULA',
-    title: 'Consumo de drogas entre jovens preocupa a sociedade em Nampula',
-    summary: 'Reportagem e entrevista em vídeo no terreno com jovens e comunidade sobre segurança, assaltos e prevenção.',
+    category: 'INSEGURANÇA · NAMPULA',
+    title: 'Grupo “15” invade residências e aterroriza moradores de Muatala',
+    summary: 'Indivíduos armados com catanas assaltam várias casas na madrugada de 4 de Novembro; moradores exigem posto policial permanente.',
     urgency: 'high'
   },
   {
@@ -298,23 +307,54 @@ export const ARTICLE_ARSENAL_PREMIER_LEAGUE: Article = {
   tags: ['Arsenal', 'Premier League', 'Manchester City', 'Brighton', 'Futebol Inglês', 'Mikel Arteta', 'Desporto']
 };
 
+export const ARTICLE_UCM_TARCISIO_ABIBO: Article = {
+  id: 'obituario-ucm-docente-tarcisio-abibo',
+  category: 'UNIVERSIDADE CATÓLICA DE MOÇAMBIQUE · FEC',
+  categoryColor: '#0D1B2A',
+  isExclusive: false,
+  isUrgent: true,
+  title: 'UCM anuncia morte do docente Tarcísio Abibo, da Faculdade de Educação e Comunicação',
+  subtitle: 'A instituição manifesta profunda consternação pelo falecimento do Mestre Tarcísio Abibo, docente em Nampula que dedicou a sua vida à formação superior.',
+  leadParagraph: 'A Universidade Católica de Moçambique (UCM) anunciou, com profunda consternação, o falecimento do Mestre Tarcísio Abibo, docente da Faculdade de Educação e Comunicação (FEC), em Nampula. O académico morreu no dia 6 de Novembro de 2026, vítima de doença.',
+  fullContent: [
+    'A Universidade Católica de Moçambique (UCM) anunciou, com profunda consternação, o falecimento do Mestre Tarcísio Abibo, docente da Faculdade de Educação e Comunicação (FEC), em Nampula. O académico morreu no dia 6 de Novembro de 2026, vítima de doença.',
+    'A informação foi divulgada através de uma nota de falecimento emitida pela instituição, na qual a Universidade manifesta pesar pela perda do docente e apresenta as suas condolências à família enlutada, aos colegas e à comunidade académica.',
+    'Tarcísio Abibo nasceu no dia 1 de Outubro de 1957 e dedicou parte da sua vida à docência, contribuindo para a formação de estudantes no ensino superior.',
+    'Na nota, a UCM destaca a dimensão da perda para a Faculdade de Educação e Comunicação e expressa solidariedade a todos os que partilharam momentos profissionais e académicos com o docente.',
+    'O seu falecimento representa um momento de luto para a comunidade académica da Universidade Católica de Moçambique, particularmente para os docentes, estudantes e colaboradores da FEC.',
+    'Que a sua alma descanse em paz.'
+  ],
+  author: {
+    name: 'Redação Central & Delegação de Nampula',
+    role: 'Comunicação Universitária & Sociedade',
+    avatar: 'UCM',
+    affiliation: 'Manhã Informativo · Cobertura Especial Nampula'
+  },
+  dateline: 'Nampula, Moçambique',
+  readTime: '3 min de leitura',
+  updatedAt: 'Atualizado hoje às 15:10 CAT',
+  imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-11_at_06.09.39_9f385582.jpeg',
+  imageCaption: 'Nota oficial de falecimento da Universidade Católica de Moçambique: Mestre Tarcísio Abibo (★ 01-10-1957 † 06-11-2026), Docente da FEC.',
+  audioDuration: '04:20 min',
+  tags: ['UCM', 'FEC', 'Nampula', 'Tarcísio Abibo', 'Educação', 'Obituário', 'Luto']
+};
+
 export const ARTICLE_VIDEO_REPORTAGEM_DROGAS: Article = {
   id: 'video-reportagem-drogas-jovens-nampula',
-  category: 'REPORTAGEM EM VÍDEO · NAMPULA',
+  category: 'SEGURANÇA & COMUNIDADE · NAMPULA',
   categoryColor: '#ba1a1a',
   isExclusive: true,
   isUrgent: true,
-  title: 'Consumo de drogas entre jovens preocupa a sociedade em Nampula',
-  subtitle: 'A problemática do consumo de substâncias psicoativas entre os jovens levanta preocupações sobre o futuro da juventude e a necessidade de maior consciencialização nas comunidades.',
-  leadParagraph: 'O consumo de drogas entre jovens continua a ser uma questão que merece atenção da sociedade, sobretudo pelos possíveis impactos na saúde, na educação e no desenvolvimento social. Em Nampula, a problemática exige maior envolvimento das famílias, instituições de ensino, autoridades e organizações comunitárias na promoção de ações de sensibilização e prevenção.',
+  title: 'GRUPO “15” INVADE RESIDÊNCIAS E ATERRORIZA MORADORES DE MUATALA',
+  subtitle: 'Moradores do bairro de Muatala, em Nampula, voltam a viver momentos de medo e insegurança após onda de assaltos com catanas. Comunidade exige instalação urgente de posto policial.',
+  leadParagraph: 'Moradores do bairro de Muatala, na cidade de Nampula, voltaram a viver momentos de medo e insegurança na madrugada desta quarta-feira, 4 de Novembro, após um grupo de indivíduos, conhecido localmente por “15”, protagonizar uma série de assaltos a residências. Segundo relatos dos moradores, os indivíduos terão invadido várias casas, ameaçando os ocupantes com recurso a catanas e apoderando-se de dinheiro e telemóveis.',
   videoUrl: '/assets/aistudio/whatsapp-video-2026-11-09-at-172750_AGxcINv2_659203cc.mp4',
   videoDuration: '01:43 min',
+  videoPoster: '/assets/aistudio/reportagem_video_poster.jpg',
   fullContent: [
-    'O consumo de drogas entre jovens continua a ser uma questão que merece atenção da sociedade, sobretudo pelos possíveis impactos na saúde, na educação e no desenvolvimento social.',
-    'Em Nampula, a problemática exige maior envolvimento das famílias, instituições de ensino, autoridades e organizações comunitárias na promoção de ações de sensibilização e prevenção.',
-    'No âmbito de uma abordagem jornalística sobre esta realidade, foi realizada uma entrevista para recolher opiniões e compreender diferentes percepções sobre o fenómeno, dando voz aos jovens e à comunidade.',
-    'A prevenção, o diálogo familiar, a educação e o acompanhamento dos jovens são fundamentais para reduzir os riscos associados ao consumo de drogas e construir uma sociedade mais consciente.',
-    'Fonte: Trabalho de reportagem e entrevista de campo — Manhã Informativo.'
+    'Moradores do bairro de Muatala, na cidade de Nampula, voltaram a viver momentos de medo e insegurança na madrugada desta quarta-feira, 4 de Novembro, após um grupo de indivíduos, conhecido localmente por “15”, protagonizar uma série de assaltos a residências. Segundo relatos dos moradores, os indivíduos terão invadido várias casas, ameaçando os ocupantes com recurso a catanas e apoderando-se de dinheiro e telemóveis.',
+    'A onda de criminalidade está a gerar preocupação entre os residentes, que afirmam já não se sentir seguros nas próprias residências, sobretudo durante a noite. Perante a situação, a comunidade apela à intervenção urgente das autoridades policiais e exige a instalação de um posto policial no bairro, como forma de reforçar o patrulhamento, prevenir novos ataques e garantir a segurança dos habitantes.',
+    'Fonte: Trabalho de reportagem e depoimentos dos moradores de Muatala, Nampula.'
   ],
   author: {
     name: 'Equipa de Reportagem de Campo',
@@ -326,9 +366,9 @@ export const ARTICLE_VIDEO_REPORTAGEM_DROGAS: Article = {
   readTime: 'Vídeo 01:43 min · 3 min leitura',
   updatedAt: 'Edição Especial de Hoje',
   imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-09_at_09.39.40_624df156.jpeg',
-  imageCaption: 'Vídeo Exclusivo: Reportagem de campo da equipa do Manhã Informativo em Nampula ouvindo residentes sobre o impacto social do consumo de drogas.',
-  audioDuration: '04:10 min',
-  tags: ['Vídeo Reportagem', 'Nampula', 'Drogas Jovens', 'Comunidade', 'Manhã Informativo', 'Sociedade']
+  imageCaption: 'Vídeo da Reportagem: Moradores do bairro de Muatala relatam momentos de pânico e exigem posto policial permanente após assaltos com catanas pelo grupo "15".',
+  audioDuration: '03:40 min',
+  tags: ['Grupo 15', 'Muatala', 'Nampula', 'Insegurança', 'Polícia da República de Moçambique', 'Assaltos', 'Comunidade']
 };
 
 export const ARTICLE_DROGAS_BELENENSES: Article = {
@@ -403,10 +443,13 @@ export const ARTICLE_DETENTOS_ARREPENDIDOS: Article = {
     affiliation: 'Penitenciária Regional de Nampula'
   },
   dateline: 'Penitenciária Regional de Nampula',
-  readTime: '8 min de leitura',
+  readTime: 'Vídeo 05:14 min · 8 min leitura',
   updatedAt: 'Hoje às 11:35 CAT',
+  videoUrl: '/assets/aistudio/video_dtr_ae604677.mp4',
+  videoDuration: '05:14 min',
+  videoPoster: '/assets/aistudio/icap_entrevista_poster.jpg',
   imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-09_at_09.34.10_5b3c5914.jpeg',
-  imageCaption: 'Fig. 1 — Entrada oficial do Estabelecimento Penitenciário Regional Norte, em Nampula: Unidade de saúde do ICAP presta acompanhamento clínico e apoio psicológico a reclusos com dependência química e síndrome de abstinência.',
+  imageCaption: 'Vídeo da Entrevista Exclusiva: Técnica de saúde do ICAP, afecta à Penitenciária Regional de Nampula, detalha os casos graves de abstinência, danos cardiovasculares e apoio psicológico aos jovens.',
   audioDuration: '10:45 min',
   tags: ['Consumo de Drogas', 'Nampula', 'Maka', 'Penitenciária Regional de Nampula', 'ICAP', 'Saúde Mental', 'Abstinência']
 };
@@ -666,7 +709,8 @@ export const GENERAL_ARTICLES: Article[] = [
     tags: ['Gorongosa', 'Biodiversidade', 'Ciência', 'Sofala']
   },
   ARTICLE_VENANCIO_MONDLANE,
-  ARTICLE_ARSENAL_PREMIER_LEAGUE
+  ARTICLE_ARSENAL_PREMIER_LEAGUE,
+  ARTICLE_UCM_TARCISIO_ABIBO
 ];
 
 // Rich dedicated articles for EACH specific navigation section

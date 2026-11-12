@@ -233,6 +233,57 @@ export default function LiveDispatchRail({
         </p>
       </div>
 
+      {/* 5. Farmácias de Turno Noturno 24h Nampula */}
+      <div className="bg-white border border-[#E5E7EB] p-3 text-xs space-y-2">
+        <div className="border-b border-[#0D1B2A] pb-1 flex items-center justify-between text-[10px] font-bold uppercase text-[#0D1B2A]">
+          <span>Farmácias de Turno 24h</span>
+          <span className="font-mono text-[#0066FF]">NAMPULA</span>
+        </div>
+        <div className="space-y-1.5 text-[11px] text-[#44474c]">
+          <div className="pb-1 border-b border-[#f1f3ff]">
+            <p className="font-bold text-[#0D1B2A] text-[10px]">Farmácia Central de Nampula</p>
+            <p className="text-[9px] text-[#74777d]">Av. Eduardo Mondlane · 84 220 1144</p>
+          </div>
+          <div className="pb-1 border-b border-[#f1f3ff]">
+            <p className="font-bold text-[#0D1B2A] text-[10px]">Farmácia Moderna (Hosp. Central)</p>
+            <p className="text-[9px] text-[#74777d]">Rua dos Sem-Medo · 82 331 9900</p>
+          </div>
+          <div>
+            <p className="font-bold text-[#0D1B2A] text-[10px]">Farmácia Popular de Muhala</p>
+            <p className="text-[9px] text-[#74777d]">Estrada de Belenenses · 87 554 2211</p>
+          </div>
+        </div>
+      </div>
+
+      {/* 6. Indicadores do Mercado Grossista de Waresta (Nampula) */}
+      <div className="bg-[#f9f9ff] border border-[#E5E7EB] p-3 text-xs space-y-2">
+        <div className="border-b border-[#0D1B2A] pb-1 flex items-center justify-between text-[10px] font-bold uppercase text-[#0D1B2A]">
+          <span>Mercado Grossista Waresta</span>
+          <span className="font-mono text-[#74777d]">COTAÇÕES</span>
+        </div>
+        <div className="space-y-1 text-[11px]">
+          <div className="flex justify-between">
+            <span className="text-[#44474c]">Milho Branco (50kg)</span>
+            <span className="font-mono font-bold text-[#0D1B2A]">1.450 MT</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-[#44474c]">Feijão Bóer (kg)</span>
+            <span className="font-mono font-bold text-[#0D1B2A]">38 MT</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-[#44474c]">Castanha Bruta (kg)</span>
+            <span className="font-mono font-bold text-[#0066FF]">45 MT</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-[#44474c]">Amendoim Graúdo (saco)</span>
+            <span className="font-mono font-bold text-[#0D1B2A]">2.100 MT</span>
+          </div>
+        </div>
+        <p className="text-[9px] text-[#74777d] pt-1 border-t border-[#E5E7EB]">
+          Apuramento matinal diário de Nampula.
+        </p>
+      </div>
+
     </div>
   );
 }

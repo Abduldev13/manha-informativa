@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Article } from '@/data/articles';
+import CommentSection from '@/components/CommentSection';
 import { X, Volume2, VolumeX, Share2, Printer, Check, ArrowLeft } from 'lucide-react';
 
 interface ArticleModalProps {
@@ -200,11 +201,13 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
               <div className="relative aspect-video w-full bg-black border border-[#0D1B2A] overflow-hidden shadow-md">
                 <video
                   src={article.videoUrl}
+                  poster={article.videoPoster}
                   controls
                   playsInline
                   preload="metadata"
                   className="w-full h-full object-contain bg-black"
                 >
+                  <source src={article.videoUrl} type="video/mp4" />
                   O seu navegador não suporta a reprodução de vídeo.
                 </video>
                 <div className="absolute top-2 left-2 bg-[#ba1a1a] text-white text-[9px] sm:text-[10px] uppercase font-bold px-2 py-0.5 tracking-wider pointer-events-none shadow-xs">
@@ -338,6 +341,9 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                 As investigações e reportagens do <em>Manhã Informativo</em> obedecem ao Estatuto do Jornalista de Moçambique e aos mais rigorosos princípios de contraditório e verificação de factos.
               </p>
             </div>
+
+            {/* Comment Section with At Least 9/10 Comments & Real Interaction */}
+            <CommentSection key={article.id} articleId={article.id} articleTitle={article.title} />
           </div>
 
         </div>

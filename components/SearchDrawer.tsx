@@ -9,6 +9,7 @@ import {
   GENERAL_ARTICLES, 
   ARTICLE_VENANCIO_MONDLANE,
   ARTICLE_ARSENAL_PREMIER_LEAGUE,
+  ARTICLE_UCM_TARCISIO_ABIBO,
   ARTICLE_DROGAS_BELENENSES, 
   ARTICLE_DETENTOS_ARREPENDIDOS, 
   ARTICLE_UCM_VISITA_PENITENCIARIO,
@@ -32,6 +33,7 @@ export default function SearchDrawer({ isOpen, onClose, onSelectArticle }: Searc
     return [
       ARTICLE_VENANCIO_MONDLANE,
       ARTICLE_ARSENAL_PREMIER_LEAGUE,
+      ARTICLE_UCM_TARCISIO_ABIBO,
       PRIMARY_LEAD_STORY,
       ARTICLE_VIDEO_REPORTAGEM_DROGAS,
       ARTICLE_DROGAS_BELENENSES,
@@ -87,7 +89,7 @@ export default function SearchDrawer({ isOpen, onClose, onSelectArticle }: Searc
         {/* Quick Suggestion Pills */}
         <div className="px-4 py-2 bg-[#f1f3ff] border-b border-[#E5E7EB] flex items-center gap-2 overflow-x-auto text-xs text-[#44474c]">
           <span className="font-bold text-[10px] uppercase text-[#74777d]">Tópicos Rápidos:</span>
-          {['Arsenal Premier League', 'Venâncio Mondlane', 'Tribunal Supremo', 'Vídeo Reportagem Nampula', 'Artigos de Opinião', 'João Nasseco', 'Inteligência Artificial', 'Marissa Alexandre', 'Sem Estágios (UCM)', 'Estudantes da UCM', 'Penitenciário Regional Norte', 'Bairro dos Belenenses'].map((quick) => (
+          {['Grupo 15 (Muatala)', 'Mestre Tarcísio Abibo (UCM)', 'Arsenal Premier League', 'Venâncio Mondlane', 'Tribunal Supremo', 'Vídeo Reportagem Nampula', 'Artigos de Opinião', 'João Nasseco', 'Inteligência Artificial', 'Marissa Alexandre', 'Sem Estágios (UCM)', 'Estudantes da UCM', 'Penitenciário Regional Norte', 'Bairro dos Belenenses'].map((quick) => (
             <button
               key={quick}
               onClick={() => setQuery(quick)}

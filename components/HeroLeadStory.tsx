@@ -7,6 +7,7 @@ import {
   SECONDARY_LEAD_STORY, 
   ARTICLE_VENANCIO_MONDLANE,
   ARTICLE_ARSENAL_PREMIER_LEAGUE,
+  ARTICLE_UCM_TARCISIO_ABIBO,
   ARTICLE_VIDEO_REPORTAGEM_DROGAS,
   ARTICLE_DROGAS_BELENENSES, 
   ARTICLE_DETENTOS_ARREPENDIDOS, 
@@ -437,7 +438,7 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
               INVESTIGAÇÃO NAMPULA
             </span>
             <span className="text-xs font-serif font-bold text-[#0D1B2A]">
-              UCM · Bairro dos Belenenses · Penitenciária Regional Norte
+              Muatala · Belenenses · UCM · Penitenciária Regional Norte
             </span>
           </div>
           <span className="text-[10px] text-[#74777d] uppercase font-mono">
@@ -445,17 +446,19 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
           </span>
         </div>
 
-        {/* Story Principal com Vídeo: Consumo de drogas entre jovens preocupa a sociedade em Nampula */}
+        {/* Story Principal com Vídeo: GRUPO “15” INVADE RESIDÊNCIAS E ATERRORIZA MORADORES DE MUATALA */}
         <div className="space-y-3 pb-5 sm:pb-6 border-b-2 border-[#0D1B2A]">
           {/* Vídeo fixado diretamente acima da notícia */}
           <div className="relative aspect-video w-full bg-black border border-[#0D1B2A] overflow-hidden shadow-sm">
             <video
               src={ARTICLE_VIDEO_REPORTAGEM_DROGAS.videoUrl}
+              poster={ARTICLE_VIDEO_REPORTAGEM_DROGAS.videoPoster}
               controls
               playsInline
               preload="metadata"
               className="w-full h-full object-contain bg-black"
             >
+              <source src={ARTICLE_VIDEO_REPORTAGEM_DROGAS.videoUrl} type="video/mp4" />
               O seu navegador não suporta a reprodução de vídeo.
             </video>
             <div className="absolute top-2 left-2 bg-[#ba1a1a] text-white text-[9px] sm:text-[10px] uppercase font-bold px-2 py-0.5 tracking-wider pointer-events-none shadow-xs">
@@ -603,27 +606,123 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
           </div>
         </div>
 
-        {/* Story 3: Detentos Arrependidos na Cadeia de Nampula */}
+        {/* Story: UCM Anuncia Morte do Docente Tarcísio Abibo (FEC Nampula) */}
         <div 
-          onClick={() => onSelectArticle(ARTICLE_DETENTOS_ARREPENDIDOS)}
-          className="cursor-pointer group space-y-2.5 sm:space-y-3 pt-2"
+          onClick={() => onSelectArticle(ARTICLE_UCM_TARCISIO_ABIBO)}
+          className="cursor-pointer group space-y-3 pb-5 sm:pb-6 border-b border-[#0D1B2A] bg-white p-3.5 sm:p-5 border"
         >
-          <div className="flex items-center gap-2 text-[10px] uppercase font-bold text-[#0050cc]">
-            <span>{ARTICLE_DETENTOS_ARREPENDIDOS.category}</span>
-            <span className="text-[#c4c6cc]">·</span>
-            <span>REINSERÇÃO CÍVICA</span>
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#0D1B2A] pb-1.5">
+            <div className="flex items-center gap-2">
+              <span className="bg-[#0D1B2A] text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-widest px-2 py-0.5">
+                † NOTA DE FALECIMENTO · UCM
+              </span>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#ba1a1a]">
+                FACULDADE DE EDUCAÇÃO E COMUNICAÇÃO
+              </span>
+            </div>
+            <span className="text-[10px] font-mono font-bold text-[#0D1B2A]">
+              ★ 01-10-1957  † 06-11-2026
+            </span>
           </div>
 
-          <h3 className="font-serif text-xl xs:text-2xl sm:text-3xl font-bold text-[#0D1B2A] group-hover:text-[#0066FF] transition-colors leading-snug">
-            {ARTICLE_DETENTOS_ARREPENDIDOS.title}
+          <h3 className="font-serif text-xl xs:text-2xl sm:text-3xl font-bold text-[#0D1B2A] group-hover:text-[#ba1a1a] transition-colors leading-snug">
+            {ARTICLE_UCM_TARCISIO_ABIBO.title}
           </h3>
 
           <p className="font-serif italic text-xs xs:text-sm sm:text-base text-[#44474c] leading-relaxed">
-            {ARTICLE_DETENTOS_ARREPENDIDOS.subtitle}
+            {ARTICLE_UCM_TARCISIO_ABIBO.subtitle}
           </p>
 
-          {/* Documentary Photo: Estabelecimento Penitenciário Regional de Nampula */}
-          {ARTICLE_DETENTOS_ARREPENDIDOS.imageUrl && (
+          {/* Official Memorial Image */}
+          {ARTICLE_UCM_TARCISIO_ABIBO.imageUrl && (
+            <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full bg-black border border-[#0D1B2A] overflow-hidden">
+              <img
+                src={ARTICLE_UCM_TARCISIO_ABIBO.imageUrl}
+                alt={ARTICLE_UCM_TARCISIO_ABIBO.title}
+                className="w-full h-full object-contain bg-black group-hover:scale-[1.01] transition-transform duration-300"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute top-2 left-2 bg-[#0D1B2A]/90 text-white text-[9px] sm:text-[10px] uppercase font-bold px-2 py-0.5 border border-white/20">
+                UCM · Nampula
+              </div>
+            </div>
+          )}
+
+          {ARTICLE_UCM_TARCISIO_ABIBO.imageCaption && (
+            <p className="text-[11px] sm:text-xs font-serif italic text-[#44474c] bg-[#f1f3ff] p-2 border border-[#E5E7EB]">
+              {ARTICLE_UCM_TARCISIO_ABIBO.imageCaption}
+            </p>
+          )}
+
+          {/* Institutional Condolences Quote */}
+          <div className="p-3 bg-[#f9fafb] border-l-4 border-[#0D1B2A] text-xs text-[#1f2937] space-y-1.5 italic">
+            <p>
+              &ldquo;É com enorme consternação que tomamos conhecimento do falecimento do Mestre Tarcísio Abibo, Docente da Faculdade de Educação e Comunicação (FEC), ocorrido hoje, 06 de Novembro, vítima de doença.&rdquo;
+            </p>
+            <p className="font-semibold text-[#0D1B2A] not-italic text-[11px]">
+              — Direção da Universidade Católica de Moçambique & Comunidade Académica da FEC
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between text-xs text-[#74777d] pt-1 gap-2 border-t border-[#E5E7EB]">
+            <span>{ARTICLE_UCM_TARCISIO_ABIBO.dateline} · {ARTICLE_UCM_TARCISIO_ABIBO.updatedAt}</span>
+            <span className="text-[#0D1B2A] font-bold group-hover:text-[#ba1a1a] flex items-center gap-1 min-h-[32px]">
+              Abrir Nota de Pesar & Condolências <ArrowRight className="w-3.5 h-3.5" />
+            </span>
+          </div>
+        </div>
+
+        {/* Story 3: Entrevista Exclusiva com Técnica de Saúde do ICAP na Penitenciária de Nampula */}
+        <div className="space-y-3 pt-3">
+          <div className="flex items-center gap-2 text-[10px] uppercase font-bold text-[#0050cc]">
+            <span>{ARTICLE_DETENTOS_ARREPENDIDOS.category}</span>
+            <span className="text-[#c4c6cc]">·</span>
+            <span>VÍDEO DA ENTREVISTA EXCLUSIVA</span>
+          </div>
+
+          <div 
+            onClick={() => onSelectArticle(ARTICLE_DETENTOS_ARREPENDIDOS)}
+            className="cursor-pointer group space-y-1.5"
+          >
+            <h3 className="font-serif text-xl xs:text-2xl sm:text-3xl font-bold text-[#0D1B2A] group-hover:text-[#0066FF] transition-colors leading-snug">
+              {ARTICLE_DETENTOS_ARREPENDIDOS.title}
+            </h3>
+
+            <p className="font-serif italic text-xs xs:text-sm sm:text-base text-[#44474c] leading-relaxed">
+              {ARTICLE_DETENTOS_ARREPENDIDOS.subtitle}
+            </p>
+          </div>
+
+          {/* Vídeo da Entrevista: Independente e Desacoplado de onClick para reprodução direta sem ecrã escuro */}
+          {ARTICLE_DETENTOS_ARREPENDIDOS.videoUrl ? (
+            <div className="space-y-2">
+              <div className="relative aspect-video w-full bg-black border border-[#0D1B2A] overflow-hidden shadow-sm">
+                <video
+                  src={ARTICLE_DETENTOS_ARREPENDIDOS.videoUrl}
+                  poster={ARTICLE_DETENTOS_ARREPENDIDOS.videoPoster}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-contain bg-black"
+                >
+                  <source src={ARTICLE_DETENTOS_ARREPENDIDOS.videoUrl} type="video/mp4" />
+                  O seu navegador não suporta a reprodução de vídeo.
+                </video>
+                <div className="absolute top-2 left-2 bg-[#ba1a1a] text-white text-[9px] sm:text-[10px] uppercase font-bold px-2 py-0.5 tracking-wider pointer-events-none shadow-xs">
+                  VÍDEO DA ENTREVISTA · EXCLUSIVO
+                </div>
+                <div className="absolute top-2 right-2 bg-[#0D1B2A]/90 text-white text-[9px] font-mono px-1.5 py-0.5 border border-white/20">
+                  05:14 MIN
+                </div>
+              </div>
+
+              {ARTICLE_DETENTOS_ARREPENDIDOS.imageCaption && (
+                <p className="text-[11px] sm:text-xs font-serif italic text-[#44474c] bg-[#f1f3ff] p-2 border border-[#E5E7EB]">
+                  {ARTICLE_DETENTOS_ARREPENDIDOS.imageCaption}
+                </p>
+              )}
+            </div>
+          ) : ARTICLE_DETENTOS_ARREPENDIDOS.imageUrl ? (
             <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-slate-900 border border-[#E5E7EB] overflow-hidden">
               <img
                 src={ARTICLE_DETENTOS_ARREPENDIDOS.imageUrl}
@@ -635,23 +734,23 @@ export default function HeroLeadStory({ onSelectArticle, fontSizeClass }: HeroLe
                 Estabelecimento Penitenciário de Nampula
               </div>
             </div>
-          )}
+          ) : null}
 
-          {ARTICLE_DETENTOS_ARREPENDIDOS.imageCaption && (
-            <p className="text-[11px] sm:text-xs font-serif italic text-[#44474c] bg-[#f1f3ff] p-2 border border-[#E5E7EB]">
-              {ARTICLE_DETENTOS_ARREPENDIDOS.imageCaption}
+          {/* Parágrafo de entrada e botão de abertura */}
+          <div 
+            onClick={() => onSelectArticle(ARTICLE_DETENTOS_ARREPENDIDOS)}
+            className="cursor-pointer group space-y-2 pt-1"
+          >
+            <p className="font-sans text-xs sm:text-sm text-[#141b2b] leading-relaxed">
+              {ARTICLE_DETENTOS_ARREPENDIDOS.leadParagraph}
             </p>
-          )}
 
-          <p className="font-sans text-xs sm:text-sm text-[#141b2b] leading-relaxed">
-            {ARTICLE_DETENTOS_ARREPENDIDOS.leadParagraph}
-          </p>
-
-          <div className="flex flex-wrap items-center justify-between text-xs text-[#74777d] pt-1 gap-2">
-            <span>Por {ARTICLE_DETENTOS_ARREPENDIDOS.author.name} · {ARTICLE_DETENTOS_ARREPENDIDOS.dateline}</span>
-            <span className="text-[#0066FF] font-bold group-hover:underline flex items-center gap-1 min-h-[32px]">
-              Ler entrevista na íntegra <ArrowRight className="w-3.5 h-3.5" />
-            </span>
+            <div className="flex flex-wrap items-center justify-between text-xs text-[#74777d] pt-1 gap-2 border-t border-[#E5E7EB]">
+              <span>Por {ARTICLE_DETENTOS_ARREPENDIDOS.author.name} · {ARTICLE_DETENTOS_ARREPENDIDOS.dateline}</span>
+              <span className="text-[#0066FF] font-bold group-hover:underline flex items-center gap-1 min-h-[32px]">
+                Ler entrevista na íntegra <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </div>
           </div>
         </div>
 
